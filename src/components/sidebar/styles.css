@@ -1,0 +1,66 @@
+.sidebar {
+  background-color: #000000;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100vh;
+  width: 80px;
+}
+.sidebar > header {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.sidebar > header > .items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sidebar > header > .items > .item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(193, 193, 193);
+}
+.sidebar > header > .items > .item > svg {
+  color: rgb(193, 193, 193);
+  font-size: 28px;
+}
+.sidebar > header > .items2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sidebar > header > .items2 > .item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgb(193, 193, 193);
+  font-weight: bold;
+}
+
+.sidebar > header > .items2 > .item > svg {
+  color: rgb(193, 193, 193);
+  font-size: 25px;
+}
+.sidebar > .line {
+  width: 100%;
+  height: 1px;
+  background-color: gray;
+  opacity: 0.4;
+}
+.sidebar > .playlists {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.sidebar > .playlists > span {
+  color: rgb(193, 193, 193);
+  font-weight: 300;
+}

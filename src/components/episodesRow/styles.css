@@ -1,0 +1,96 @@
+.episodes {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  position: relative;
+}
+.episodes > h1 {
+  font-size: 23px;
+}
+.episodes > .container-episodes {
+  position: relative;
+}
+
+.episodes > .container-episodes > .arrowLeft,
+.episodes > .container-episodes > .arrowRight {
+  position: absolute;
+  width: 40px;
+  height: 279px;
+  background-color: #181818a2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: all ease 0.5s;
+}
+.episodes > .container-episodes > .arrowLeft {
+  left: 0px;
+}
+.episodes > .container-episodes > .arrowRight {
+  right: 0px;
+}
+
+.episodes > .container-episodes > .arrowLeft > svg,
+.episodes > .container-episodes > .arrowRight > svg {
+  font-size: 35px;
+  opacity: 0.6;
+}
+.episodes > .container-episodes > .episodes-area {
+  overflow-x: hidden;
+}
+.episodes > .container-episodes > .episodes-area > .episodes-list {
+  display: flex;
+  gap: 20px;
+  transition: all ease 1s;
+}
+
+.episodes > .container-episodes > .episodes-area > .episodes-list > .episode {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  background-color: #181818;
+  padding: 20px;
+  height: 279px;
+  width: 201px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.episodes
+  > .container-episodes
+  > .episodes-area
+  > .episodes-list
+  > .episode:hover {
+  background-color: rgb(41, 41, 41);
+}
+.episodes
+  > .container-episodes
+  > .episodes-area
+  > .episodes-list
+  > .episode
+  > img {
+  width: 178px;
+  height: 178px;
+  border-radius: 50%;
+  align-self: center;
+}
+.episodes
+  > .container-episodes
+  > .episodes-area
+  > .episodes-list
+  > .episode
+  > h1 {
+  font-size: 16px;
+}
+.episodes
+  > .container-episodes
+  > .episodes-area
+  > .episodes-list
+  > .episode
+  > span {
+  font-size: 14px;
+  color: #b3b3b3;
+}

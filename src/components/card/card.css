@@ -1,0 +1,71 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #181818;
+  padding: 20px;
+  height: 279px;
+  width: 201px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.card:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.card > .spotify-button {
+  position: absolute;
+  bottom: 97px;
+  right: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card > .spotify-button > .spotify-play-button {
+  width: 48px;
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #1ed760;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.card > .spotify-button > .spotify-play-button::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  left: 18px;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 16px solid rgb(0, 0, 0);
+  border-radius: 2px;
+}
+
+.card > .spotify-button > .spotify-play-button:hover {
+  transform: scale(1.1);
+}
+
+.card > .spotify-button > .spotify-play-button:active {
+  transform: scale(0.9);
+}
+.card > img {
+  width: 170px;
+  height: 170px;
+
+  align-self: center;
+}
+.card > h1 {
+  font-size: 16px;
+}
+
+.card > span {
+  font-size: 14px;
+  color: #b3b3b3;
+}

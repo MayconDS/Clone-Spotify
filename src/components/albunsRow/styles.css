@@ -1,0 +1,61 @@
+.albuns {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+}
+.albuns > h1 {
+  font-size: 23px;
+}
+
+.albuns > .container-albuns > .arrowLeft,
+.albuns > .container-albuns > .arrowRight {
+  position: absolute;
+  width: 40px;
+  height: 279px;
+  background-color: #181818a2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: all ease 0.5s;
+}
+.albuns > .container-albuns > .arrowLeft {
+  left: 0px;
+}
+.albuns > .container-albuns > .arrowRight {
+  right: 0px;
+}
+
+.albuns > .container-albuns > .arrowLeft > svg,
+.albuns > .container-albuns > .arrowRight > svg {
+  font-size: 35px;
+  opacity: 0.6;
+}
+.albuns > .container-albuns > .albuns-area {
+  overflow-x: hidden;
+}
+.albuns > .container-albuns > .albuns-area > .albuns-list {
+  display: flex;
+  gap: 20px;
+
+  transition: all ease 1s;
+}
+
+.albuns > .container-albuns > .albuns-area > .albuns-list > .artist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  background-color: #181818;
+  padding: 20px;
+  height: 279px;
+  width: 201px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.albuns > .container-albuns > .albuns-area > .albuns-list > .artist:hover {
+  background-color: rgb(41, 41, 41);
+}

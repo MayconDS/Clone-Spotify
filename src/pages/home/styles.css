@@ -1,0 +1,8 @@
+.home {
+  display: flex;
+  overflow-y: auto;
+}
+.home > .fixed {
+  width: calc(100% - 320px);
+  flex: 1;
+}
