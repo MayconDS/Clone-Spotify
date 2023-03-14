@@ -1,0 +1,73 @@
+.music {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.music > .info > .banner {
+  position: relative;
+}
+.music > .info > .banner > img {
+  width: 40px;
+  height: 40px;
+}
+.music > .info > .banner > .play-icon {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}
+.music > .info > .banner > .play-icon > svg {
+  font-size: 26px;
+}
+.music > .info {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 10px;
+  gap: 16px;
+}
+.music:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.music > .info > .title h1 {
+  font-size: 16px;
+  font-weight: 400;
+}
+.music > .info > .title span {
+  color: #a7a7a7;
+  font-size: 14px;
+  display: flex;
+}
+.music > .info > .title span > .explicit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff99;
+  width: 15px;
+  color: #121212;
+  font-size: 9px;
+  border-radius: 2px;
+  margin-right: 5px;
+  height: 16px;
+}
+.music > .time {
+  margin-left: 150px;
+  color: #a7a7a7;
+  font-size: 14px;
+}
+/* -- musics -- */
+
+/* MEDIA QUERY */
+
+@media (max-width: 1097px) {
+}
+@media (max-width: 700px) {
+  .music > .info > .title h1 {
+    font-size: 14px;
+  }
+
+  .music > .info > .title span {
+    font-size: 12px;
+  }
+}

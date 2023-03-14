@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  z-index: 1;
   cursor: pointer;
 
   transition: all ease 0.5s;

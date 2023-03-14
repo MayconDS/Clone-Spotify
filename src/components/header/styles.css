@@ -1,0 +1,52 @@
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+header > .header-top > {
+  display: flex;
+}
+header > .header-top > .search-input {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 10px;
+  max-width: 400px;
+  border-radius: 32px;
+}
+header > .header-top > .search-input > svg {
+  color: #121212;
+  font-size: 30px;
+}
+header > .header-top > .search-input > input {
+  background-color: transparent;
+  color: #121212;
+  height: 30px;
+  width: 100%;
+  border: none;
+  outline: 0;
+}
+header > .header-top > .search-input > input::placeholder {
+  color: #8f8f8f;
+}
+/* nav */
+header > nav {
+  display: flex;
+  gap: 12px;
+}
+header > nav > a {
+  text-decoration: none;
+}
+header > nav > a > button {
+  background-color: #232323;
+  color: rgb(255, 255, 255);
+  height: 36px;
+  padding: 12.5px;
+  border: none;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}

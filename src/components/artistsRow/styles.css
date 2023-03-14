@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  z-index: 1;
   cursor: pointer;
 
   transition: all ease 0.5s;
@@ -45,33 +45,4 @@
   display: flex;
   gap: 20px;
   transition: all ease 1s;
-}
-
-.artists > .container-artists > .artists-area > .artists-list > .artist {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  background-color: #181818;
-  padding: 20px;
-  height: 279px;
-  width: 201px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.artists > .container-artists > .artists-area > .artists-list > .artist:hover {
-  background-color: rgb(41, 41, 41);
-}
-.artists > .container-artists > .artists-area > .artists-list > .artist > img {
-  width: 178px;
-  height: 178px;
-  border-radius: 50%;
-  align-self: center;
-}
-.artists > .container-artists > .artists-area > .artists-list > .artist > h1 {
-  font-size: 16px;
-}
-.artists > .container-artists > .artists-area > .artists-list > .artist > span {
-  font-size: 14px;
-  color: #b3b3b3;
 }

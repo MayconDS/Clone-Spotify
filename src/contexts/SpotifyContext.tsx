@@ -1,9 +1,26 @@
 import { useContext, useReducer, createContext, ReactNode } from "react";
 
+type SongType = {
+  name: string;
+  artists: [];
+  preview_url: string;
+  album: {
+    images: [
+      {
+        url: string;
+      }
+    ];
+  };
+  id: string;
+};
+
 type State = {
   token: string;
   query: string;
   filter: string;
+  song: SongType | null;
+  data: any;
+  filterActiveHeader: string;
 };
 
 type Action = {
@@ -24,6 +41,9 @@ const initialData: State = {
   token: "",
   query: "Caio Luccas",
   filter: "all",
+  song: null,
+  data: [],
+  filterActiveHeader: "track,playlist,album,episode,artist",
 };
 
 const SpotifyContext = createContext<ContextType | undefined>(undefined);
@@ -32,6 +52,9 @@ export enum SpotifyActions {
   setToken,
   setQuery,
   setFilter,
+  setSong,
+  setData,
+  setActiveFilterHeader,
 }
 
 const SpotifyReducer = (state: State, action: Action) => {
@@ -50,6 +73,21 @@ const SpotifyReducer = (state: State, action: Action) => {
       return {
         ...state,
         filter: action.payload,
+      };
+    case SpotifyActions.setSong:
+      return {
+        ...state,
+        song: action.payload,
+      };
+    case SpotifyActions.setData:
+      return {
+        ...state,
+        data: action.payload,
+      };
+    case SpotifyActions.setActiveFilterHeader:
+      return {
+        ...state,
+        filterActiveHeader: action.payload,
       };
     default:
       return state;

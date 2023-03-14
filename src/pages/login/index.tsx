@@ -29,7 +29,7 @@ function Login() {
 
   const handleClick = () => {
     const clientId = "272442fc1fd44c6faeba458eaaefd1c6";
-    const redirectUrl = "http://127.0.0.1:5173/login";
+    const redirectUrl = "http://localhost:5173/login";
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-email",

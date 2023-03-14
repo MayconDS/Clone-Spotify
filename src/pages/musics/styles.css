@@ -1,0 +1,35 @@
+.tracks-page {
+  background-color: #121212;
+  height: 100vh;
+  padding: 10px 0px;
+  padding-right: 80px;
+  padding-left: 30px;
+  overflow-y: hidden;
+}
+.tracks-page > .container-tracks {
+  padding-top: 25px;
+  height: 100vh;
+  padding-bottom: 220px;
+}
+.tracks-page > .container-tracks > .header-tracks {
+  display: flex;
+  justify-content: space-between;
+}
+.tracks-page > .container-tracks > .header-tracks > h1 {
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 400;
+}
+.tracks-page > .container-tracks > .header-tracks > h1 > svg {
+  width: 16px;
+  height: 16px;
+}
+.tracks-page > .container-tracks {
+  overflow-y: auto;
+}
+
+.tracks-page > .container-tracks > .tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}

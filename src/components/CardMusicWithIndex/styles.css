@@ -1,0 +1,74 @@
+.cardMusic {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+}
+.cardMusic:hover {
+  background-color: rgb(41, 41, 41);
+}
+.cardMusic > .music-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 620px;
+}
+.cardMusic > .music-info > .index {
+  display: flex;
+  justify-content: center;
+  width: 12px;
+}
+.cardMusic > .music-info > .index > span > svg {
+  color: white;
+  font-size: 25px;
+}
+.cardMusic > .music-info > .index > span {
+  color: #b3b3b3;
+
+  text-align: left;
+}
+.cardMusic > .music-info > .banner > img {
+  width: 40px;
+  height: 40px;
+}
+.cardMusic > .music-info > .title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cardMusic > .music-info > .title > h1 {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+}
+.cardMusic > .music-info > .title > span {
+  display: flex;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.cardMusic > .music-info > .title > span > .explicit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff99;
+  width: 15px;
+  color: #121212;
+  font-size: 9px;
+  border-radius: 2px;
+  margin-right: 5px;
+  height: 16px;
+}
+.cardMusic > .music-album {
+  width: 565px;
+}
+.cardMusic > .music-album > span {
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.cardMusic > .music-duration {
+  color: #b3b3b3;
+  font-size: 14px;
+}

@@ -1,0 +1,23 @@
+.albums-page {
+  background-color: #121212;
+  height: 100vh;
+  padding: 10px 0px;
+  padding-right: 30px;
+  padding-left: 30px;
+  overflow-y: hidden;
+}
+.albums-page > .container-albums {
+  padding-top: 25px;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 220px;
+}
+.albums-page > .container-albums {
+  padding-top: 25px;
+}
+.albums-page > .container-albums > .albums {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px 25px;
+}

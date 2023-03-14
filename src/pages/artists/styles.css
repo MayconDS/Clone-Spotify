@@ -1,0 +1,22 @@
+.artists-page {
+  background-color: #121212;
+  height: 100vh;
+  padding: 10px 0px;
+  padding-right: 30px;
+  padding-left: 30px;
+  overflow-y: hidden;
+}
+.artists-page > .container-artists {
+  padding-top: 25px;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 250px;
+}
+.artists-page > .container-artists {
+  padding-top: 25px;
+}
+.artists-page > .container-artists > .artists {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

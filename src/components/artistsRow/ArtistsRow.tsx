@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 import "./styles.css";
+import CardArtist from "../cardArtist/CardArtist";
 
 const ArtistsRow = ({ items }: any) => {
+  const [buttonPlayActive, setButtonPlayActive] = useState(false);
   const [scrollX, setScrollX] = useState(0);
   const [finalList, setFinalList] = useState(false);
   const handleLeftArrow = () => {
@@ -33,6 +35,15 @@ const ArtistsRow = ({ items }: any) => {
       setFinalList(false);
     }
   }, [scrollX]);
+
+  const handleHoverCard = (e: any) => {
+    if (e.type == "mouseenter") {
+      setButtonPlayActive(true);
+    } else if (e.type == "mouseleave") {
+      setButtonPlayActive(false);
+    }
+  };
+
   return (
     <div className="artists">
       <h1>Artistas</h1>
@@ -61,16 +72,7 @@ const ArtistsRow = ({ items }: any) => {
               className="artists-list"
             >
               {items &&
-                items.map((artist: any) => (
-                  <div className="artist">
-                    <img
-                      src={artist.images.length > 0 && artist.images[0].url}
-                      alt=""
-                    />
-                    <h1>{artist.name}</h1>
-                    <span>{artist.type}</span>
-                  </div>
-                ))}
+                items.map((artist: any) => <CardArtist data={artist} />)}
             </div>
           </div>
         </div>

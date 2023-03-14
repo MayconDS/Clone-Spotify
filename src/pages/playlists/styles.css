@@ -1,0 +1,22 @@
+.playlists-page {
+  background-color: #121212;
+  height: 100vh;
+  padding: 10px 0px;
+  padding-right: 30px;
+  padding-left: 30px;
+  overflow-y: hidden;
+}
+.playlists-page > .container-playlists {
+  padding-top: 25px;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 220px;
+}
+.playlists-page > .container-playlists {
+  padding-top: 25px;
+}
+.playlists-page > .container-playlists > .playlists {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

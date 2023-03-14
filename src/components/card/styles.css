@@ -1,7 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   background-color: #181818;
   padding: 20px;
   height: 279px;
@@ -63,6 +63,7 @@
 }
 .card > h1 {
   font-size: 16px;
+  color: white;
 }
 
 .card > span {

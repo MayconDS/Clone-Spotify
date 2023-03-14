@@ -38,36 +38,47 @@ const AlbunsRow = ({ items, type }: any) => {
   return (
     <div className="albuns">
       <h1>Álbuns</h1>
-      {items && (
-        <div className="container-albuns">
-          <div
-            style={{ opacity: scrollX == 0 ? "0" : "" }}
-            onClick={handleLeftArrow}
-            className="arrowLeft"
-          >
-            <AiOutlineLeft />
-          </div>
-          <div
-            style={{ opacity: finalList == true ? "0" : "" }}
-            onClick={handleRightArrow}
-            className="arrowRight"
-          >
-            <AiOutlineRight />
-          </div>
-          <div className="albuns-area">
-            <div
-              style={{
-                marginLeft: scrollX,
-                width: items.length * 178,
-              }}
-              className="albuns-list"
-            >
-              {items &&
-                items.map((album: any) => <Card data={album} type={type} />)}
-            </div>
-          </div>
+      <div className="container-albuns">
+        <div
+          className="arrowLeft"
+          style={{
+            opacity: scrollX == 0 ? "0" : "",
+          }}
+          onClick={handleLeftArrow}
+        >
+          <AiOutlineLeft />
         </div>
-      )}
+        <div
+          style={{
+            opacity: finalList == true ? "0" : "",
+          }}
+          onClick={handleRightArrow}
+          className="arrowRight"
+        >
+          <AiOutlineRight />
+        </div>
+
+        {items && (
+          <>
+            <div className="albuns-area">
+              <div
+                style={{
+                  marginLeft: scrollX,
+                  width: items.length * 178,
+                }}
+                className="albuns-list"
+              >
+                {items &&
+                  items.map((album: any) => (
+                    <div className="card-wrapper">
+                      <Card data={album} type={type} />
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

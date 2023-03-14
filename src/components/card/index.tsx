@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { BsPlayCircleFill } from "react-icons/bs";
 
-import "./card.css";
+import "./styles.css";
+import { formatString } from "../../functions/FormatString/FormatString";
 
 const Card = ({ data, type }: any) => {
   const [buttonPlayActive, setButtonPlayActive] = useState(false);
-  let nameLimited = "";
-  if (data.name.length > 16) {
-    nameLimited = data.name.substring(0, 16);
-    nameLimited += "...";
-  } else {
-    nameLimited = data.name;
-  }
 
   const handleHoverCard = (e: any) => {
     if (e.type == "mouseenter") {
@@ -23,9 +17,9 @@ const Card = ({ data, type }: any) => {
 
   return (
     <div
+      className="card"
       onMouseEnter={handleHoverCard}
       onMouseLeave={handleHoverCard}
-      className="card"
     >
       <div
         style={{ opacity: buttonPlayActive == true ? "1" : "0" }}
@@ -34,16 +28,19 @@ const Card = ({ data, type }: any) => {
         <button className="spotify-play-button"></button>
       </div>
       <img className="banner" src={data.images[0].url} />
-      <h1>{nameLimited}</h1>
+      <h1>{formatString(data.name, undefined)}</h1>
       {type == "album" ? (
-        <span>
-          {data.release_date.split("-")[0]} •
-          {data.artists.map((artist: any) => (
-            <span> {artist.name}, </span>
-          ))}
-        </span>
+        formatString(
+          "",
+          <span style={{ color: "gray" }}>
+            {data.release_date.split("-")[0]} •
+            {data.artists.map((artist: any) => (
+              <span> {artist.name}, </span>
+            ))}
+          </span>
+        )
       ) : type == "playlist" ? (
-        <span>{data.owner.display_name}</span>
+        <span>{formatString(data.owner.display_name, undefined)}</span>
       ) : (
         <span>{Math.ceil(data.duration_ms * 3600) / 3600}</span>
       )}
