@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useSpotify, SpotifyActions } from "../contexts/SpotifyContext";
 
-import Home from "../pages/home";
 import Search from "../pages/search";
 import Login from "../pages/login";
 import PrivateRouter from "./PrivateRouter";
@@ -9,6 +8,10 @@ import Musics from "../pages/musics";
 import Playlists from "../pages/playlists";
 import Artists from "../pages/artists";
 import Albums from "../pages/albums";
+import Artist from "../pages/artist";
+import Playlist from "../pages/playlist";
+import Album from "../pages/album";
+import Home from "../pages/home";
 
 const Router = () => {
   const { state, dispatch } = useSpotify();
@@ -17,10 +20,18 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/search"
+          path="/"
           element={
             <PrivateRouter>
               <Home />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <PrivateRouter>
+              <Search />
             </PrivateRouter>
           }
         />
@@ -54,6 +65,30 @@ const Router = () => {
           element={
             <PrivateRouter>
               <Albums />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/artist/:id"
+          element={
+            <PrivateRouter>
+              <Artist />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/playlist/:id"
+          element={
+            <PrivateRouter>
+              <Playlist />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path="/album/:id"
+          element={
+            <PrivateRouter>
+              <Album />
             </PrivateRouter>
           }
         />

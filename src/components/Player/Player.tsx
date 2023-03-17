@@ -89,7 +89,9 @@ const Player = () => {
             <FaStepBackward />
           </button>
           <button
-            style={{ transform: isPlaying == true ? "scale(1.05,1.05)" : "" }}
+            style={{
+              transform: isPlaying == true ? "scale(1.05,1.05)" : "",
+            }}
             onClick={handlePlayButtonClick}
             id="play-btn"
           >

@@ -21,6 +21,7 @@ type State = {
   song: SongType | null;
   data: any;
   filterActiveHeader: string;
+  user: any;
 };
 
 type Action = {
@@ -44,6 +45,7 @@ const initialData: State = {
   song: null,
   data: [],
   filterActiveHeader: "track,playlist,album,episode,artist",
+  user: {},
 };
 
 const SpotifyContext = createContext<ContextType | undefined>(undefined);
@@ -55,6 +57,7 @@ export enum SpotifyActions {
   setSong,
   setData,
   setActiveFilterHeader,
+  setUser,
 }
 
 const SpotifyReducer = (state: State, action: Action) => {
@@ -88,6 +91,11 @@ const SpotifyReducer = (state: State, action: Action) => {
       return {
         ...state,
         filterActiveHeader: action.payload,
+      };
+    case SpotifyActions.setUser:
+      return {
+        ...state,
+        user: action.payload,
       };
     default:
       return state;

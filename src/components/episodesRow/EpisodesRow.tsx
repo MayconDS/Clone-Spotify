@@ -62,7 +62,9 @@ const EpisodesRow = ({ items, type }: any) => {
               className="episodes-list"
             >
               {items &&
-                items.map((album: any) => <Card data={album} type={type} />)}
+                items.map((album: any, key: number) => (
+                  <Card key={key} data={album} type={type} />
+                ))}
             </div>
           </div>
         </div>

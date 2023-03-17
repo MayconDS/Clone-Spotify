@@ -3,52 +3,57 @@
   padding: 60px 20px;
   display: flex;
   flex-direction: column;
+  position: relative;
   gap: 16px;
   height: 100vh;
-  width: 80px;
+  max-width: 225px;
+  width: 100%;
 }
 .sidebar > header {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+
+  background-color: transparent;
 }
 .sidebar > header > .items {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
 }
-.sidebar > header > .items > .item {
+.sidebar > header > .items > .item > a {
+  text-decoration: none;
+}
+.sidebar > header > .items > .item a {
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
-  color: rgb(193, 193, 193);
-}
-.sidebar > header > .items > .item > svg {
-  color: rgb(193, 193, 193);
-  font-size: 28px;
-}
-.sidebar > header > .items2 {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.sidebar > header > .items2 > .item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  font-size: 14px;
-  color: rgb(193, 193, 193);
-  font-weight: bold;
+  color: #b3b3b3;
 }
 
-.sidebar > header > .items2 > .item > svg {
-  color: rgb(193, 193, 193);
-  font-size: 25px;
+.sidebar > header > .items > .item a > svg {
+  color: #b3b3b3;
+
+  font-size: 24px;
 }
+.sidebar > header > .items > .item > a > .home {
+  fill: #b3b3b3;
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar > header > .items > .item:hover a {
+  color: white;
+}
+.sidebar > header > .items > .item:hover svg {
+  color: white;
+}
+.sidebar > header > .items > .item:hover .home {
+  fill: white;
+}
+
 .sidebar > .line {
   width: 100%;
   height: 1px;
@@ -60,7 +65,33 @@
   flex-direction: column;
   gap: 13px;
 }
-.sidebar > .playlists > span {
+.sidebar > .playlists > a {
+  text-decoration: none;
   color: rgb(193, 193, 193);
   font-weight: 300;
+}
+.sidebar > .playlists > a:hover {
+  color: white;
+  cursor: default;
+}
+.sidebar > .copyright {
+  position: absolute;
+  bottom: 15px;
+  background-color: transparent;
+}
+.sidebar > .copyright > span {
+  color: rgb(104, 104, 104);
+  background-color: transparent;
+}
+
+@media (max-width: 1000px) {
+  .sidebar {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    max-width: 120px;
+  }
 }

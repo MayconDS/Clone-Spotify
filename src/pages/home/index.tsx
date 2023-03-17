@@ -1,18 +1,32 @@
-import Player from "../../components/Player/Player";
+import Card from "../../components/card";
 import Sidebar from "../../components/sidebar";
-import { useSpotify } from "../../contexts/SpotifyContext";
-import Search from "../search";
 import "./styles.css";
+import { useState, useEffect } from "react";
+import SpotifyServices from "../../services/Api";
 
 const Home = () => {
-  const { state } = useSpotify();
+  const [playlists, setPlaylists] = useState<any>([]);
+  useEffect(() => {
+    const getMyPlaylists = async () => {
+      let data = await SpotifyServices.getMyPlaylists();
+      setPlaylists(data.items);
+    };
+    getMyPlaylists();
+  }, []);
+
+  console.log(playlists);
+
   return (
     <div className="home">
       <Sidebar />
-      {state.song != null && <Player />}
-
-      <div className="fixed">
-        <Search />
+      <div className="container-home">
+        <h1>Suas playlists</h1>
+        <div className="container-playlists">
+          {playlists.length > 0 &&
+            playlists.map((playlist: any) => (
+              <Card type="playlist" data={playlist} />
+            ))}
+        </div>
       </div>
     </div>
   );

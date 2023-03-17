@@ -2,10 +2,17 @@ header {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  background-color: #121212;
+  padding-bottom: 10px;
 }
-header > .header-top > {
+header > .header-top {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 50px;
 }
+
 header > .header-top > .search-input {
   background-color: white;
   display: flex;
@@ -13,6 +20,7 @@ header > .header-top > .search-input {
   gap: 12px;
   padding: 5px 10px;
   max-width: 400px;
+  width: 100%;
   border-radius: 32px;
 }
 header > .header-top > .search-input > svg {
@@ -29,6 +37,34 @@ header > .header-top > .search-input > input {
 }
 header > .header-top > .search-input > input::placeholder {
   color: #8f8f8f;
+}
+header > .header-top > .user {
+  background-color: #000000b3;
+  max-width: 100px;
+  border-radius: 23px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+header > .header-top > .user > .icon {
+  width: 28px;
+  height: 28px;
+  background-color: #535353;
+  display: flex;
+  border-radius: 23px;
+  place-items: center;
+  justify-content: center;
+}
+header > .header-top > .user > .icon svg {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+header > .header-top > .user > h1 {
+  font-size: 14px;
+  color: white;
 }
 /* nav */
 header > nav {

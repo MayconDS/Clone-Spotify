@@ -1,0 +1,158 @@
+/* background-color: rgb(224, 232, 232); */
+/* background-image: linear-gradient(rgba(0,0,0,.6) 0, #121212 100%),#fff */
+
+/* img "https://i.scdn.co/image/ab6761610000e5eb3d67a3f1155837d54e0e711d" */
+
+.album-page {
+  display: flex;
+  width: 100%;
+}
+.album-page > .container {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 150px;
+}
+
+.album-page > .container > .flyer-album {
+  min-height: 340px;
+  max-height: 540px;
+}
+.album-page > .container > .flyer-album {
+  padding: 20px 30px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+.album-page > .container > .flyer-album > .shadow {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  bottom: 0;
+}
+.album-page > .container > .flyer-album > .box {
+  display: flex;
+  align-items: flex-end;
+  z-index: 2;
+  gap: 25px;
+}
+.album-page > .container > .flyer-album > .box > .picture-album > img {
+  width: 226px;
+  height: 226px;
+
+  box-shadow: rgba(0.5, 0.5, 0.5, 0.5) 0px 10px 12px;
+}
+.album-page > .container > .flyer-album > .box > .info > h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+.album-page > .container > .flyer-album > .box > .info > h1 {
+  color: white;
+  font-size: 40px;
+}
+
+.album-page > .container > .flyer-album > .box > .info > #description {
+  font-size: 14px;
+  color: #ffffffb2;
+}
+.album-page > .container > .flyer-album > .box > .info > .owner {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.album-page > .container > .flyer-album > .box > .info > .owner > img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.album-page > .container > .flyer-album > .box > .info > .owner > b {
+  color: white;
+  font-size: 14px;
+}
+.album-page > .container > .flyer-album > .box > .info > .owner > span {
+  color: white;
+  font-size: 14px;
+}
+/* top tracks */
+
+.album-page > .container > .top-tracks {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 30px;
+  gap: 20px;
+}
+.album-page > .container > .top-tracks > .header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.album-page > .container > .top-tracks > .header > #play {
+  width: 55px;
+  height: 55px;
+  color: #1ed760;
+}
+.album-page > .container > .top-tracks > .header > button {
+  background-color: transparent;
+  border: 1px solid rgb(189, 189, 189);
+  width: 80px;
+  height: 30px;
+  color: white;
+  font-weight: 800;
+  border-radius: 3px;
+}
+.album-page > .container > .top-tracks > .header > button:hover {
+  border-color: white;
+}
+.album-page > .container > .top-tracks > .header > #dots {
+  color: rgb(189, 189, 189);
+  width: 28px;
+  height: 28px;
+}
+
+.album-page > .container > .top-tracks > .tracks-container > h1 {
+  color: #fff;
+  font-size: 24px;
+}
+
+.album-page > .container > .top-tracks > .tracks-container > .header-tracks {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+  padding-bottom: 4px;
+}
+.album-page > .container > .top-tracks > .tracks-container .header-tracks > h1 {
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 400;
+}
+.album-page
+  > .container
+  > .top-tracks
+  > .tracks-container
+  .header-tracks
+  > h1
+  > svg {
+  width: 16px;
+  height: 16px;
+}
+.album-page > .container > .top-tracks > .tracks-container .tracks-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.album-page > .container > .top-tracks > .tracks-container > .line {
+  width: 100%;
+  height: 0.1px;
+  background-color: #b3b3b3;
+  opacity: 0.3;
+}

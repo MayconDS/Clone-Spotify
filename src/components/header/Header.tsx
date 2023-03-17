@@ -11,16 +11,28 @@ import {
 
 import "./styles.css";
 import { Link } from "react-router-dom";
-const Header = ({ setData }: any) => {
+import { AiOutlineUser } from "react-icons/ai";
+const Header = () => {
   const { state, dispatch } = useSpotify();
   const [search, setSearch] = useState("");
-
   const [filter, setFilter] = useState("track,playlist,album,episode,artist");
   const [filterActive, setFilterActive] = useState(state.filterActiveHeader);
 
   useEffect(() => {
     setFilterActive(state.filterActiveHeader);
   }, [state.filterActiveHeader]);
+
+  useEffect(() => {
+    const getMe = async () => {
+      let data = await SpotifyServices.getMe();
+
+      dispatch({
+        type: SpotifyActions.setUser,
+        payload: data,
+      });
+    };
+    getMe();
+  }, []);
 
   const handleButton = (e: any) => {
     setFilter(e.target.value);
@@ -52,6 +64,14 @@ const Header = ({ setData }: any) => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
+        {state.user.display_name && (
+          <div className="user">
+            <div className="icon">
+              <AiOutlineUser />
+            </div>
+            <h1>{state.user.display_name.substring(0, 12)}</h1>
+          </div>
+        )}
       </div>
       <nav>
         <Link to="/search">

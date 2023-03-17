@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import CardMusicWithIndex from "../../components/CardMusicWithIndex/CardMusicWithIndex";
 import Player from "../../components/Player/Player";
 import Card from "../../components/card";
+import Sidebar from "../../components/sidebar";
 
 const Playlists = () => {
   const { state } = useSpotify();
@@ -14,7 +15,8 @@ const Playlists = () => {
     setPlaylists(state.data.playlists);
   }, [state.data]);
   return (
-    <>
+    <div style={{ display: "flex" }}>
+      <Sidebar />
       {state.song != null && <Player />}
       <div className="playlists-page">
         <Header />
@@ -22,13 +24,13 @@ const Playlists = () => {
         <div className="container-playlists">
           <div className="playlists">
             {playlists &&
-              playlists.items.map((playlist: any, index: any) => (
-                <Card data={playlist} />
+              playlists.items.map((playlist: any, index: number) => (
+                <Card data={playlist} type="playlist" key={index} />
               ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

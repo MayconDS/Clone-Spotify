@@ -69,8 +69,8 @@ const AlbunsRow = ({ items, type }: any) => {
                 className="albuns-list"
               >
                 {items &&
-                  items.map((album: any) => (
-                    <div className="card-wrapper">
+                  items.map((album: any, key: number) => (
+                    <div key={key} className="card-wrapper">
                       <Card data={album} type={type} />
                     </div>
                   ))}

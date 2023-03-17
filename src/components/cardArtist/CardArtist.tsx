@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { BsPlayCircleFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 
 const CardArtist = ({ data, type }: any) => {
+  const navigate = useNavigate();
   const [buttonPlayActive, setButtonPlayActive] = useState(false);
   let nameLimited = "";
   if (data.name.length > 16) {
@@ -20,12 +22,15 @@ const CardArtist = ({ data, type }: any) => {
       setButtonPlayActive(false);
     }
   };
-
+  const redirect = () => {
+    return navigate(`/artist/${data.id}`);
+  };
   return (
     <div
       onMouseEnter={handleHoverCard}
       onMouseLeave={handleHoverCard}
       className="card-artist"
+      onClick={redirect}
     >
       <div
         style={{ opacity: buttonPlayActive == true ? "1" : "0" }}

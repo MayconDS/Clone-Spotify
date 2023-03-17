@@ -7,6 +7,7 @@ import CardMusicWithIndex from "../../components/CardMusicWithIndex/CardMusicWit
 import Player from "../../components/Player/Player";
 import Card from "../../components/card";
 import CardArtist from "../../components/cardArtist/CardArtist";
+import Sidebar from "../../components/sidebar";
 
 const Artists = () => {
   const { state } = useSpotify();
@@ -15,7 +16,8 @@ const Artists = () => {
     setArtists(state.data.artists);
   }, [state.data]);
   return (
-    <>
+    <div style={{ display: "flex" }}>
+      <Sidebar />
       {state.song != null && <Player />}
       <div className="artists-page">
         <Header />
@@ -29,7 +31,7 @@ const Artists = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

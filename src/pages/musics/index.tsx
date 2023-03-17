@@ -5,6 +5,7 @@ import "./styles.css";
 import { useEffect, useState } from "react";
 import CardMusicWithIndex from "../../components/CardMusicWithIndex/CardMusicWithIndex";
 import Player from "../../components/Player/Player";
+import Sidebar from "../../components/sidebar";
 const Musics = () => {
   const { state } = useSpotify();
   const [tracks, setTracks] = useState(state.data.tracks);
@@ -12,7 +13,8 @@ const Musics = () => {
     setTracks(state.data.tracks);
   }, [state.data]);
   return (
-    <>
+    <div style={{ display: "flex" }}>
+      <Sidebar />
       {state.song != null && <Player />}
       <div className="tracks-page">
         <Header />
@@ -36,7 +38,7 @@ const Musics = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

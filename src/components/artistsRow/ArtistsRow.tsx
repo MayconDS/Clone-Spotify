@@ -17,7 +17,7 @@ const ArtistsRow = ({ items }: any) => {
   };
   const handleRightArrow = () => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = items.length * 178;
+    let listW = items.length * 222;
 
     if (window.innerWidth - listW > x) {
       x = window.innerWidth - listW - 60;
@@ -27,7 +27,7 @@ const ArtistsRow = ({ items }: any) => {
   };
   useEffect(() => {
     let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = items.length * 178;
+    let listW = items.length * 228;
 
     if (window.innerWidth - (listW + 534) > x) {
       setFinalList(true);
@@ -36,18 +36,9 @@ const ArtistsRow = ({ items }: any) => {
     }
   }, [scrollX]);
 
-  const handleHoverCard = (e: any) => {
-    if (e.type == "mouseenter") {
-      setButtonPlayActive(true);
-    } else if (e.type == "mouseleave") {
-      setButtonPlayActive(false);
-    }
-  };
-
   return (
     <div className="artists">
-      <h1>Artistas</h1>
-      {items && (
+      {items ? (
         <div className="container-artists">
           <div
             style={{ opacity: scrollX == 0 ? "0" : "" }}
@@ -76,7 +67,7 @@ const ArtistsRow = ({ items }: any) => {
             </div>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

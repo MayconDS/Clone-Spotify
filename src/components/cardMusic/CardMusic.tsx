@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiPause, BiPlay } from "react-icons/bi";
 import "./styles.css";
 import { SpotifyActions } from "../../contexts/SpotifyContext";
@@ -6,7 +6,19 @@ import { useSpotify } from "../../contexts/SpotifyContext";
 import { formatTime } from "../../functions/FormatTime";
 
 const CardMusic = ({ track }: any) => {
+  const [artist, setArtist] = useState<any>();
+  const [hoverMusic, setHoverMusic] = useState(false);
   const { state, dispatch } = useSpotify();
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handlePlaySong = () => {
     dispatch({
@@ -14,7 +26,63 @@ const CardMusic = ({ track }: any) => {
       payload: track,
     });
   };
-  const [hoverMusic, setHoverMusic] = useState(false);
+
+  const formatStringCardMusic = (html: any) => {
+    let strLimited = "";
+    let explicit = false;
+
+    if (html.props.children[0]) {
+      explicit = true;
+    }
+
+    html.props.children[1].map((item: any) => {
+      item.props.children.map((item2: any) => {
+        strLimited += item2;
+      });
+    });
+    if (strLimited.length > 20) {
+      if (windowSize >= 600) {
+        strLimited = strLimited.substring(0, 40);
+        strLimited += "...";
+      } else {
+        strLimited = strLimited.substring(0, 20);
+        strLimited += "...";
+      }
+      return setArtist(
+        <span
+          style={{
+            color: hoverMusic == true ? "white" : "",
+          }}
+        >
+          {" "}
+          {explicit && <div className="explicit">E</div>} {strLimited}{" "}
+        </span>
+      );
+    } else {
+      return setArtist(
+        <span
+          style={{
+            color: hoverMusic == true ? "white" : "",
+          }}
+        >
+          {strLimited}
+        </span>
+      );
+    }
+  };
+  useEffect(() => {
+    formatStringCardMusic(
+      <span>
+        {track.explicit == true ? <div className="explicit">E</div> : null}
+        {track.artists.map((artist: any, key: number) => (
+          <span style={{ color: hoverMusic == true ? "#fff" : "" }} key={key}>
+            {artist.name},
+          </span>
+        ))}
+      </span>
+    );
+  }, [windowSize]);
+
   return (
     <div
       onMouseLeave={() => setHoverMusic(false)}
@@ -47,18 +115,12 @@ const CardMusic = ({ track }: any) => {
         </div>
 
         <div className="title">
-          <h1>{track.name}</h1>
-
-          <span
-            style={{
-              color: hoverMusic == true ? "white" : "",
-            }}
+          <h1
+            style={{ color: state.song?.id == track.id ? "#1db954" : "white" }}
           >
-            {track.explicit == true ? <div className="explicit">E</div> : null}
-            {track.artists.map((artist: any) => (
-              <span>{artist.name}, </span>
-            ))}
-          </span>
+            {track.name}
+          </h1>
+          {artist}
         </div>
       </div>
       <div className="time">{formatTime(track.duration_ms)}</div>

@@ -28,9 +28,11 @@
 }
 .artists > .container-artists > .arrowLeft {
   left: 0px;
+  color: white;
 }
 .artists > .container-artists > .arrowRight {
   right: 0px;
+  color: white;
 }
 
 .artists > .container-artists > .arrowLeft > svg,

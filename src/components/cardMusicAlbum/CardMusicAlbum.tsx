@@ -4,9 +4,10 @@ import { CgLoadbarSound } from "react-icons/cg";
 import { SpotifyActions, useSpotify } from "../../contexts/SpotifyContext";
 import "./styles.css";
 import { formatTime } from "../../functions/FormatTime";
+import SpotifyServices from "../../services/Api";
 
-const CardMusicWithIndex = ({ track, index }: any) => {
-  console.log(track);
+const CardMusicAlbum = ({ track, index }: any) => {
+  const [trackWithFullInfo, setTrackWithFullInfo] = useState({});
   const [hoverMusic, setHoverMusic] = useState(false);
   const { state, dispatch } = useSpotify();
   const formatString = (html: any) => {
@@ -47,11 +48,12 @@ const CardMusicWithIndex = ({ track, index }: any) => {
       );
     }
   };
-  const handlePlayMusic = () => {
+  const handlePlayMusic = async () => {
     if (track.preview_url !== null) {
+      let data = await SpotifyServices.getTrack(track.id);
       dispatch({
         type: SpotifyActions.setSong,
-        payload: track,
+        payload: data,
       });
     }
   };
@@ -61,7 +63,7 @@ const CardMusicWithIndex = ({ track, index }: any) => {
         <div
           onMouseLeave={() => setHoverMusic(false)}
           onMouseEnter={() => setHoverMusic(true)}
-          className="cardMusic"
+          className="cardMusicAlbum"
           onClick={handlePlayMusic}
         >
           <div className="music-info">
@@ -80,12 +82,7 @@ const CardMusicWithIndex = ({ track, index }: any) => {
                 )}
               </span>
             </div>
-            <div className="banner">
-              <img
-                src={track.album.images ? track.album.images[0].url : ""}
-                alt=""
-              />
-            </div>
+            <div className="banner"></div>
             <div className="title">
               <h1
                 style={{
@@ -107,9 +104,7 @@ const CardMusicWithIndex = ({ track, index }: any) => {
               )}
             </div>
           </div>
-          <div className="music-album">
-            <span>{track.album.name}</span>
-          </div>
+
           <div className="music-duration">{formatTime(track.duration_ms)}</div>
         </div>
       )}
@@ -117,4 +112,4 @@ const CardMusicWithIndex = ({ track, index }: any) => {
   );
 };
 
-export default CardMusicWithIndex;
+export default CardMusicAlbum;
