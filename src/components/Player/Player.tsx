@@ -16,6 +16,7 @@ import { useSpotify } from "../../contexts/SpotifyContext";
 import RangeSlider from "../Range/Range";
 const Player = () => {
   const { state } = useSpotify();
+  const [artist, setArtist] = useState<any>();
   const [stateVolume, setStateVolume] = useState(0.5);
   const audioRef = useRef<any>(null);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -47,30 +48,50 @@ const Player = () => {
         strLimited += item2;
       });
     });
-    if (strLimited.length > 50) {
-      strLimited = strLimited.substring(0, 50);
-      strLimited += "...";
-      return <span>{strLimited}</span>;
+    if (strLimited.length > 20) {
+      if (state.windowWidth >= 860) {
+        strLimited = strLimited.substring(0, 45);
+        strLimited += "...";
+      } else if (state.windowWidth <= 663 && state.windowWidth > 436) {
+        strLimited = strLimited.substring(0, 15);
+        strLimited += "...";
+      } else if (state.windowWidth <= 436) {
+        strLimited = strLimited.substring(0, 20);
+        strLimited += "...";
+      } else {
+        strLimited = strLimited.substring(0, 30);
+        strLimited += "...";
+      }
+      return setArtist(<span>{strLimited}</span>);
     } else {
-      return <span>{strLimited}</span>;
+      return setArtist(<span>{strLimited}</span>);
     }
   };
-
+  useEffect(() => {
+    formatString(
+      <span>
+        {state.song?.artists.map((artist: any) => (
+          <span>{artist.name}, </span>
+        ))}
+      </span>
+    );
+  }, [state.windowWidth]);
   return (
-    <div className="spotify-player">
+    <div
+      style={{
+        flexDirection: state.windowWidth <= 449 ? "column" : "row",
+        height: state.windowWidth <= 449 ? "150px" : "90px",
+        paddingTop: state.windowWidth <= 449 ? "10px" : "",
+      }}
+      className="spotify-player"
+    >
       <div className="song">
         <div className="song-banner">
           <img src={state.song?.album.images[0].url} alt="" />
         </div>
         <div className="song-title">
           <h1>{state.song?.name}</h1>
-          {formatString(
-            <span>
-              {state.song?.artists.map((artist: any) => (
-                <span>{artist.name}, </span>
-              ))}
-            </span>
-          )}
+          {artist}
         </div>
         <div className="song-buttons">
           <AiOutlineHeart />
@@ -116,23 +137,25 @@ const Player = () => {
           />
         </div>
       </div>
-      <div className="controls-adjust">
-        <button>
-          {" "}
-          <TbMicrophone2 />{" "}
-        </button>
-        <button>
-          {" "}
-          <HiOutlineQueueList />{" "}
-        </button>
-        <button>
-          <MdDevices />
-        </button>
-        <div className="volume">
-          <RxSpeakerModerate />
-          <RangeSlider setVolume={setStateVolume} />
+      {state.windowWidth > 660 && (
+        <div className="controls-adjust">
+          <button>
+            {" "}
+            <TbMicrophone2 />{" "}
+          </button>
+          <button>
+            {" "}
+            <HiOutlineQueueList />{" "}
+          </button>
+          <button>
+            <MdDevices />
+          </button>
+          <div className="volume">
+            <RxSpeakerModerate />
+            <RangeSlider setVolume={setStateVolume} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
