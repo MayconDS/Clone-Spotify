@@ -29,7 +29,7 @@ function Login() {
 
   const handleClick = () => {
     const clientId = "272442fc1fd44c6faeba458eaaefd1c6";
-    const redirectUrl = "http://newsound.vercel.app/login";
+    const redirectUrl = "https://newsound.vercel.app/login";
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-email",
