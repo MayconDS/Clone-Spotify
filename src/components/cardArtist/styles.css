@@ -6,7 +6,9 @@
   background-color: #181818;
   padding: 20px;
   height: 279px;
-  width: 201px;
+  height: 100%;
+  max-width: 201px;
+  width: 100%;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -68,4 +70,123 @@
 .card-artist > span {
   font-size: 14px;
   color: #b3b3b3;
+}
+
+@media (max-width: 1350px) {
+  .card-artist {
+    max-width: 180px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 158px;
+    height: 158px;
+  }
+}
+
+@media (max-width: 957px) {
+  .card-artist {
+    max-width: 160px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 138px;
+    height: 138px;
+  }
+}
+
+@media (max-width: 872px) {
+  .card-artist {
+    max-width: 201px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 178px;
+    height: 178px;
+  }
+}
+
+@media (max-width: 819px) {
+  .card-artist {
+    max-width: 181px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 158px;
+    height: 158px;
+  }
+}
+
+@media (max-width: 754px) {
+  .card-artist {
+    max-width: 151px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+@media (max-width: 674px) {
+  .card-artist {
+    max-width: 211px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 178px;
+    height: 178px;
+  }
+}
+
+@media (max-width: 613px) {
+  .card-artist {
+    max-width: 181px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 148px;
+    height: 148px;
+  }
+}
+
+@media (max-width: 503px) {
+  .card-artist {
+    max-width: 161px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 128px;
+    height: 128px;
+  }
+}
+@media (max-width: 464px) {
+  .card-artist {
+    max-width: 141px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 118px;
+    height: 118px;
+  }
+}
+
+@media (max-width: 422px) {
+  .card-artist {
+    max-width: 281px;
+    height: 279px;
+    width: 100%;
+  }
+  .card-artist > img {
+    width: 148px;
+    height: 148px;
+  }
 }

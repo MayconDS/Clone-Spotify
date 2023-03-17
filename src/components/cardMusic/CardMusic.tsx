@@ -35,14 +35,14 @@ const CardMusic = ({ track }: any) => {
       if (state.windowWidth >= 600) {
         strLimited = strLimited.substring(0, 40);
         strLimited += "...";
-      } else if (state.windowWidth <= 398 && state.windowWidth > 340) {
+      } else if (state.windowWidth <= 398 && state.windowWidth > 343) {
         strLimited = strLimited.substring(0, 15);
         strLimited += "...";
-      } else if (state.windowWidth <= 340) {
+      } else if (state.windowWidth <= 343) {
         strLimited = strLimited.substring(0, 8);
         strLimited += "...";
       } else {
-        strLimited = strLimited.substring(0, 10);
+        strLimited = strLimited.substring(0, 30);
         strLimited += "...";
       }
       return setArtist(
@@ -68,8 +68,15 @@ const CardMusic = ({ track }: any) => {
     }
   };
   const formatNameArtist = (name: string) => {
-    if (state.windowWidth <= 396) {
+    if (
+      (state.windowWidth <= 396 && state.windowWidth > 360) ||
+      (name.length > 30 && state.windowWidth > 360)
+    ) {
+      return `${name.substring(0, 20)}...`;
+    } else if (state.windowWidth <= 360 && state.windowWidth > 320) {
       return `${name.substring(0, 10)}...`;
+    } else if (state.windowWidth <= 320) {
+      return `${name.substring(0, 8)}...`;
     } else {
       return name;
     }

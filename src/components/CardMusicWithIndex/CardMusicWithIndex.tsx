@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { BiPlay } from "react-icons/bi";
 import { CgLoadbarSound } from "react-icons/cg";
 import { SpotifyActions, useSpotify } from "../../contexts/SpotifyContext";
@@ -6,9 +6,25 @@ import "./styles.css";
 import { formatTime } from "../../functions/FormatTime";
 
 const CardMusicWithIndex = ({ track, index }: any) => {
-  console.log(track);
+  const [artist, setArtist] = useState<any>();
   const [hoverMusic, setHoverMusic] = useState(false);
   const { state, dispatch } = useSpotify();
+
+  const formatNameArtist = (name: string) => {
+    if (
+      (state.windowWidth <= 396 && state.windowWidth > 375) ||
+      (name.length > 30 && state.windowWidth > 375)
+    ) {
+      return `${name.substring(0, 20)}...`;
+    } else if (state.windowWidth <= 375 && state.windowWidth > 320) {
+      return `${name.substring(0, 10)}...`;
+    } else if (state.windowWidth <= 320) {
+      return `${name.substring(0, 8)}...`;
+    } else {
+      return name;
+    }
+  };
+
   const formatString = (html: any) => {
     let strLimited = "";
     let explicit = false;
@@ -22,10 +38,24 @@ const CardMusicWithIndex = ({ track, index }: any) => {
         strLimited += item2;
       });
     });
-    if (strLimited.length > 50) {
-      strLimited = strLimited.substring(0, 50);
-      strLimited += "...";
-      return (
+    if (strLimited.length > 20) {
+      if (state.windowWidth >= 600) {
+        strLimited = strLimited.substring(0, 40);
+        strLimited += "...";
+      } else if (state.windowWidth <= 503 && state.windowWidth > 398) {
+        strLimited = strLimited.substring(0, 25);
+        strLimited += "...";
+      } else if (state.windowWidth <= 398 && state.windowWidth > 343) {
+        strLimited = strLimited.substring(0, 15);
+        strLimited += "...";
+      } else if (state.windowWidth <= 343) {
+        strLimited = strLimited.substring(0, 8);
+        strLimited += "...";
+      } else {
+        strLimited = strLimited.substring(0, 30);
+        strLimited += "...";
+      }
+      return setArtist(
         <span
           style={{
             color: hoverMusic == true ? "white" : "",
@@ -36,7 +66,7 @@ const CardMusicWithIndex = ({ track, index }: any) => {
         </span>
       );
     } else {
-      return (
+      return setArtist(
         <span
           style={{
             color: hoverMusic == true ? "white" : "",
@@ -55,6 +85,17 @@ const CardMusicWithIndex = ({ track, index }: any) => {
       });
     }
   };
+  useEffect(() => {
+    formatString(
+      <span>
+        {track.explicit == true ? <div className="explicit">E</div> : null}
+        {track.artists.map((artist: any, key: number) => (
+          <span key={key}>{artist.name}, </span>
+        ))}
+      </span>
+    );
+  }, [state.windowWidth]);
+
   return (
     <>
       {track !== null && (
@@ -92,24 +133,16 @@ const CardMusicWithIndex = ({ track, index }: any) => {
                   color: state.song?.id == track.id ? "#1db954" : "white",
                 }}
               >
-                {track.name}
+                {formatNameArtist(track.name)}
               </h1>
-
-              {formatString(
-                <span>
-                  {track.explicit == true ? (
-                    <div className="explicit">E</div>
-                  ) : null}
-                  {track.artists.map((artist: any, key: number) => (
-                    <span key={key}>{artist.name}, </span>
-                  ))}
-                </span>
-              )}
+              {artist}
             </div>
           </div>
-          <div className="music-album">
-            <span>{track.album.name}</span>
-          </div>
+          {state.windowWidth >= 1140 ? (
+            <div className="music-album">
+              <span>{track.album.name}</span>
+            </div>
+          ) : null}
           <div className="music-duration">{formatTime(track.duration_ms)}</div>
         </div>
       )}

@@ -25,7 +25,7 @@ const Musics = () => {
               {" "}
               <span>#</span> Título
             </h1>
-            <h1>Álbum</h1>
+            {state.windowWidth >= 1140 ? <h1>Álbum</h1> : null}
             <h1>
               <HiOutlineClock />
             </h1>

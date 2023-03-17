@@ -39,7 +39,10 @@ const Card = ({ data, type }: any) => {
       >
         <button className="spotify-play-button"></button>
       </div>
-      <img className="banner" src={data.images[0].url} />
+      <img
+        className="banner"
+        src={data.images.length > 0 ? data.images[0].url : ""}
+      />
       <h1>{formatString(data.name, undefined)}</h1>
       {type == "album" ? (
         formatString(

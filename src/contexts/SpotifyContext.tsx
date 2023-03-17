@@ -47,7 +47,7 @@ const initialData: State = {
   data: [],
   filterActiveHeader: "track,playlist,album,episode,artist",
   user: {},
-  windowWidth: 0,
+  windowWidth: 1920,
 };
 
 const SpotifyContext = createContext<ContextType | undefined>(undefined);
