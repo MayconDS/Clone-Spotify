@@ -69,6 +69,8 @@
   text-decoration: none;
   color: rgb(193, 193, 193);
   font-weight: 300;
+
+  width: 100%;
 }
 .sidebar > .playlists > a:hover {
   color: white;
@@ -90,8 +92,8 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .sidebar {
-    max-width: 120px;
+    max-width: 70px;
   }
 }

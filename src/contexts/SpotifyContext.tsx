@@ -22,6 +22,7 @@ type State = {
   data: any;
   filterActiveHeader: string;
   user: any;
+  windowWidth: number;
 };
 
 type Action = {
@@ -46,6 +47,7 @@ const initialData: State = {
   data: [],
   filterActiveHeader: "track,playlist,album,episode,artist",
   user: {},
+  windowWidth: 0,
 };
 
 const SpotifyContext = createContext<ContextType | undefined>(undefined);
@@ -58,6 +60,7 @@ export enum SpotifyActions {
   setData,
   setActiveFilterHeader,
   setUser,
+  setWindowWidth,
 }
 
 const SpotifyReducer = (state: State, action: Action) => {
@@ -96,6 +99,11 @@ const SpotifyReducer = (state: State, action: Action) => {
       return {
         ...state,
         user: action.payload,
+      };
+    case SpotifyActions.setWindowWidth:
+      return {
+        ...state,
+        windowWidth: action.payload,
       };
     default:
       return state;

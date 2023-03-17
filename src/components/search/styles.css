@@ -19,7 +19,7 @@
 
 .search-page > .container {
   padding: 10px 0px;
-  padding-right: 30px;
+
   padding-left: 30px;
   width: 100%;
 }
@@ -114,6 +114,7 @@
 }
 .search-page > .container > .body > .container-body > .box > .best-result h1 {
   font-size: 23px;
+  color: white;
 }
 
 .search-page
@@ -313,5 +314,18 @@
 @media (max-width: 1097px) {
   .search-page > .container > .body > .container-body > .box {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 450px) {
+  .search-page
+    > .container
+    > .body
+    > .container-body
+    > .box
+    > .best-result
+    > .result
+    h1 {
+    font-size: 18px;
   }
 }

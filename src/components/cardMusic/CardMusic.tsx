@@ -4,21 +4,12 @@ import "./styles.css";
 import { SpotifyActions } from "../../contexts/SpotifyContext";
 import { useSpotify } from "../../contexts/SpotifyContext";
 import { formatTime } from "../../functions/FormatTime";
+import { formatString } from "../../functions/FormatString/FormatString";
 
 const CardMusic = ({ track }: any) => {
   const [artist, setArtist] = useState<any>();
   const [hoverMusic, setHoverMusic] = useState(false);
   const { state, dispatch } = useSpotify();
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowSize(window.innerWidth);
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const handlePlaySong = () => {
     dispatch({
@@ -41,8 +32,11 @@ const CardMusic = ({ track }: any) => {
       });
     });
     if (strLimited.length > 20) {
-      if (windowSize >= 600) {
+      if (state.windowWidth >= 600) {
         strLimited = strLimited.substring(0, 40);
+        strLimited += "...";
+      } else if (state.windowWidth <= 400) {
+        strLimited = strLimited.substring(0, 7);
         strLimited += "...";
       } else {
         strLimited = strLimited.substring(0, 20);
@@ -70,6 +64,13 @@ const CardMusic = ({ track }: any) => {
       );
     }
   };
+  const formatNameArtist = (name: string) => {
+    if (state.windowWidth <= 465) {
+      return `${name.substring(0, 10)}...`;
+    } else {
+      return name;
+    }
+  };
   useEffect(() => {
     formatStringCardMusic(
       <span>
@@ -81,7 +82,7 @@ const CardMusic = ({ track }: any) => {
         ))}
       </span>
     );
-  }, [windowSize]);
+  }, [state.windowWidth]);
 
   return (
     <div
@@ -118,7 +119,7 @@ const CardMusic = ({ track }: any) => {
           <h1
             style={{ color: state.song?.id == track.id ? "#1db954" : "white" }}
           >
-            {track.name}
+            {formatNameArtist(track.name)}
           </h1>
           {artist}
         </div>
