@@ -49,7 +49,7 @@ const CardMusicWithIndex = ({ track, index }: any) => {
         strLimited = strLimited.substring(0, 15);
         strLimited += "...";
       } else if (state.windowWidth <= 343) {
-        strLimited = strLimited.substring(0, 6);
+        strLimited = strLimited.substring(0, 5);
         strLimited += "...";
       } else {
         strLimited = strLimited.substring(0, 30);

@@ -15,6 +15,6 @@
 
 .home > .container-home > .container-playlists {
   display: flex;
-  gap: 30px;
+  gap: 10px;
   flex-wrap: wrap;
 }
