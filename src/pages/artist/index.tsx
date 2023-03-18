@@ -84,7 +84,7 @@ const Artist = () => {
           >
             <div
               style={{
-                background: `linear-gradient(to right top, #000000 -21%, transparent 35%)`,
+                background: `linear-gradient(to right top, #000  -41%, transparent 90%)`,
               }}
               className="shadow"
             ></div>
