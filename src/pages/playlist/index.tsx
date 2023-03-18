@@ -1,14 +1,11 @@
 import { useEffect, useState, useRef, LegacyRef, createRef } from "react";
 import { BsPlayCircleFill, BsThreeDots } from "react-icons/bs";
 import { useParams } from "react-router-dom";
-import ArtistsRow from "../../components/artistsRow/ArtistsRow";
-import CardMusic from "../../components/cardMusic/CardMusic";
 import SpotifyServices from "../../services/Api";
 import ColorThief from "color-thief-react";
 
 import "./styles.css";
 import CardMusicWithIndex from "../../components/CardMusicWithIndex/CardMusicWithIndex";
-import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar";
 import { useSpotify } from "../../contexts/SpotifyContext";
 import Player from "../../components/Player/Player";
@@ -20,6 +17,7 @@ const Playlist = () => {
 
   const { state } = useSpotify();
   const [bgColor, setBgColor] = useState("");
+  const [artists, setArtists] = useState("");
   const [playlist, setPlaylist] = useState<any>({});
   const [tracks, setTracks] = useState<any>([]);
   const [owner, setOwner] = useState<any>({});
@@ -55,6 +53,31 @@ const Playlist = () => {
     getAllDataOfPlaylist();
     backToTop();
   }, [id]);
+
+  const FormatStringArtists = () => {
+    if (owner.display_name) {
+      if (state.windowWidth > 790) {
+        return owner.display_name;
+      } else if (state.windowWidth <= 790 && state.windowWidth > 340) {
+        return owner.display_name.slice(0, 15) + "...";
+      } else if (state.windowWidth <= 340) {
+        return owner.display_name.slice(0, 8) + "...";
+      } else {
+        return owner.display_name;
+      }
+    }
+  };
+
+  useEffect(() => {
+    FormatStringArtists();
+  }, [state.windowWidth]);
+  const formatAlbumName = (html: any) => {
+    if (state.windowWidth <= 789 && html.props.children.length >= 24) {
+      return <h1 style={{ fontSize: "20px" }}>{html.props.children}</h1>;
+    } else {
+      return html;
+    }
+  };
 
   return (
     <div className="playlist-page">
@@ -92,14 +115,14 @@ const Playlist = () => {
               </div>
               <div className="info">
                 <h3>{playlist.type}</h3>
-                <h1>{playlist.name}</h1>
+                {formatAlbumName(<h1>{playlist.name}</h1>)}
                 <span id="description">{playlist.description}</span>
                 <div className="owner">
                   <img
                     src={owner.images.length > 0 ? owner.images[0].url : ""}
                     alt={owner.display_name}
                   />
-                  <b>{owner.display_name}</b>
+                  <b>{FormatStringArtists()}</b>
                   <span>•</span>
                   <span>{playlist.followers.total} curtidas</span>
                   <span>•</span>
@@ -127,7 +150,7 @@ const Playlist = () => {
                   {" "}
                   <span>#</span> Título
                 </h1>
-                <h1>Álbum</h1>
+                {state.windowWidth > 1139 && <h1>Álbum</h1>}
                 <h1>
                   <HiOutlineClock />
                 </h1>

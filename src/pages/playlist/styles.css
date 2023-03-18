@@ -165,3 +165,58 @@
   background-color: #b3b3b3;
   opacity: 0.3;
 }
+
+@media (max-width: 790px) {
+  .playlist-page
+    > .container
+    > .flyer-playlist
+    > .box
+    > .picture-playlist
+    > img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 705px) {
+  .playlist-page > .container > .flyer-playlist > .box > .info > .owner > b {
+    font-size: 12px;
+  }
+  .playlist-page > .container > .flyer-playlist > .box > .info > .owner > span {
+    font-size: 12px;
+  }
+  .playlist-page
+    > .container
+    > .flyer-playlist
+    > .box
+    > .picture-playlist
+    > img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 605px) {
+  .playlist-page > .container > .flyer-playlist > .box > .info > h1 {
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 510px) {
+  .playlist-page > .container > .top-tracks {
+    padding: 25px 5px;
+  }
+  .playlist-page > .container > .flyer-playlist > .box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 350px) {
+  .playlist-page > .container > .flyer-playlist > .box > .info > h1 {
+    font-size: 12px !important;
+  }
+  .playlist-page > .container > .flyer-playlist > .box > .info > h3 {
+    font-size: 12px !important;
+  }
+}

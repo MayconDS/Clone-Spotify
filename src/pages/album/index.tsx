@@ -5,7 +5,6 @@ import SpotifyServices from "../../services/Api";
 import ColorThief from "color-thief-react";
 
 import "./styles.css";
-import CardMusicWithIndex from "../../components/CardMusicWithIndex/CardMusicWithIndex";
 import Sidebar from "../../components/sidebar";
 import { useSpotify } from "../../contexts/SpotifyContext";
 import Player from "../../components/Player/Player";
@@ -55,7 +54,30 @@ const Album = () => {
     backToTop();
   }, [id]);
 
-  console.log(tracks);
+  const FormatStringArtists = () => {
+    if (state.windowWidth > 790) {
+      return artists;
+    } else if (state.windowWidth <= 790 && state.windowWidth > 340) {
+      return artists.slice(0, 15) + "...";
+    } else if (state.windowWidth <= 340) {
+      return artists.slice(0, 8) + "...";
+    } else {
+      return artists;
+    }
+  };
+
+  useEffect(() => {
+    FormatStringArtists();
+  }, [state.windowWidth]);
+  const formatAlbumName = (html: any) => {
+    if (state.windowWidth <= 789 && html.props.children.length >= 29) {
+      return <h1 style={{ fontSize: "20px" }}>{html.props.children}</h1>;
+    } else {
+      return html;
+    }
+  };
+
+  console.log(state.windowWidth);
 
   return (
     <div className="album-page">
@@ -92,11 +114,13 @@ const Album = () => {
                 <img src={album.images[0].url} alt="" />
               </div>
               <div className="info">
-                <h3>{album.type}</h3>
-                <h1>{album.name}</h1>
+                <h3>Álbum</h3>
+
+                {formatAlbumName(<h1>{album.name}</h1>)}
+
                 <span id="description">{album.description}</span>
                 <div className="owner">
-                  <b>{artists}</b>
+                  <b>{FormatStringArtists()}</b>
                   <span>{album.release_date.split("-")[0]}</span>
                   <span>•</span>
                   <span>{album.total_tracks} músicas</span>
@@ -123,7 +147,7 @@ const Album = () => {
                   {" "}
                   <span>#</span> Título
                 </h1>
-                <h1>Álbum</h1>
+
                 <h1>
                   <HiOutlineClock />
                 </h1>

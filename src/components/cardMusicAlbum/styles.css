@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px 20px;
+  gap: 10px;
 }
 .cardMusicAlbum:hover {
   background-color: rgb(41, 41, 41);

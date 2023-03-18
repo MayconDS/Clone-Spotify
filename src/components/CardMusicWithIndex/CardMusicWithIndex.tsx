@@ -16,10 +16,10 @@ const CardMusicWithIndex = ({ track, index }: any) => {
       (name.length > 30 && state.windowWidth > 375)
     ) {
       return `${name.substring(0, 20)}...`;
-    } else if (state.windowWidth <= 375 && state.windowWidth > 320) {
+    } else if (state.windowWidth <= 375 && state.windowWidth > 340) {
       return `${name.substring(0, 10)}...`;
-    } else if (state.windowWidth <= 320) {
-      return `${name.substring(0, 8)}...`;
+    } else if (state.windowWidth <= 340) {
+      return `${name.substring(0, 4)}...`;
     } else {
       return name;
     }
@@ -49,7 +49,7 @@ const CardMusicWithIndex = ({ track, index }: any) => {
         strLimited = strLimited.substring(0, 15);
         strLimited += "...";
       } else if (state.windowWidth <= 343) {
-        strLimited = strLimited.substring(0, 8);
+        strLimited = strLimited.substring(0, 6);
         strLimited += "...";
       } else {
         strLimited = strLimited.substring(0, 30);

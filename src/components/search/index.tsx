@@ -151,9 +151,6 @@ const Search = () => {
                   type="playlist"
                 />
               )}
-              {state.data.episodes && (
-                <EpisodesRow items={state.data.episodes.items} type="episode" />
-              )}
             </div>
           </div>
         </div>

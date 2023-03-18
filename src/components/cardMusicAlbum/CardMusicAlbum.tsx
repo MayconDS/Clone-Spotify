@@ -23,8 +23,21 @@ const CardMusicAlbum = ({ track, index }: any) => {
         strLimited += item2;
       });
     });
-    if (strLimited.length > 50) {
-      strLimited = strLimited.substring(0, 50);
+    if (strLimited.length > 50 && state.windowWidth > 500) {
+      strLimited = strLimited.substring(0, 40);
+      strLimited += "...";
+      return (
+        <span
+          style={{
+            color: hoverMusic == true ? "white" : "",
+          }}
+        >
+          {" "}
+          {explicit && <div className="explicit">E</div>} {strLimited}{" "}
+        </span>
+      );
+    } else if (state.windowWidth <= 425) {
+      strLimited = strLimited.substring(0, 10);
       strLimited += "...";
       return (
         <span
