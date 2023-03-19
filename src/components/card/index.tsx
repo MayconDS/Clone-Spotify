@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 import { BsPlayCircleFill } from "react-icons/bs";
 
 import "./styles.css";
@@ -9,7 +9,7 @@ const Card = ({ data, type }: any) => {
   let navigate = useNavigate();
   const [buttonPlayActive, setButtonPlayActive] = useState(false);
 
-  const handleHoverCard = (e: any) => {
+  const handleHoverCard = (e: MouseEvent) => {
     if (e.type == "mouseenter") {
       setButtonPlayActive(true);
     } else if (e.type == "mouseleave") {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { BsPlayCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ const CardArtist = ({ data, type }: any) => {
     nameLimited = data.name;
   }
 
-  const handleHoverCard = (e: any) => {
+  const handleHoverCard = (e: MouseEvent) => {
     if (e.type == "mouseenter") {
       setButtonPlayActive(true);
     } else if (e.type == "mouseleave") {

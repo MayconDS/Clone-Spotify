@@ -1,4 +1,4 @@
-import { useState, KeyboardEvent, useEffect } from "react";
+import React, { useState, KeyboardEvent, useEffect } from "react";
 
 import { FiSearch } from "react-icons/fi";
 
@@ -34,7 +34,9 @@ const Header = () => {
     getMe();
   }, []);
 
-  const handleButton = (e: any) => {
+  const handleButton = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFilter(e.target.value);
 
     setFilterActive(e.target.value);

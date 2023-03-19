@@ -18,7 +18,7 @@ const CardMusic = ({ track }: any) => {
     });
   };
 
-  const formatStringCardMusic = (html: any) => {
+  const formatStringCardMusic = (html: JSX.Element) => {
     let strLimited = "";
     let explicit = false;
 

@@ -10,7 +10,8 @@ const CardMusicAlbum = ({ track, index }: any) => {
   const [trackWithFullInfo, setTrackWithFullInfo] = useState({});
   const [hoverMusic, setHoverMusic] = useState(false);
   const { state, dispatch } = useSpotify();
-  const formatString = (html: any) => {
+
+  const formatString = (html: JSX.Element) => {
     let strLimited = "";
     let explicit = false;
 

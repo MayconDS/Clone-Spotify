@@ -64,7 +64,7 @@ const Search = () => {
     getDataDefault();
   }, []);
 
-  const handleHoverBestResult = (e: any) => {
+  const handleHoverBestResult = (e: React.MouseEvent) => {
     if (e.type == "mouseenter") {
       setButtonPlayActive(true);
     } else if (e.type == "mouseleave") {

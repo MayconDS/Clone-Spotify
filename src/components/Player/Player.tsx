@@ -40,11 +40,11 @@ const Player = () => {
     setIsPlaying(true);
   }, [state.song]);
 
-  const formatString = (html: any) => {
+  const formatString = (html: JSX.Element) => {
     let strLimited = "";
 
-    html.props.children.map((item: any) => {
-      item.props.children.map((item2: any) => {
+    html.props.children.map((item: JSX.Element) => {
+      item.props.children.map((item2: JSX.Element) => {
         strLimited += item2;
       });
     });
@@ -75,7 +75,9 @@ const Player = () => {
         ))}
       </span>
     );
-  }, [state.windowWidth]);
+  }, [state.windowWidth, state.song]);
+
+  console.log(state.song);
   return (
     <div
       style={{
