@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-
+import { SpotifyAlbums, SpotifyAlbumsAndPlaylists } from "../../Types/AllTypes";
 import "./styles.css";
 import Card from "../card";
 
-const AlbunsRow = ({ items, type }: any) => {
+type ItemsType = {
+  items: SpotifyAlbumsAndPlaylists[];
+  type: string;
+};
+
+const AlbunsRow = ({ items, type }: ItemsType) => {
   const [scrollX, setScrollX] = useState(0);
   const [finalList, setFinalList] = useState(false);
+
   const handleLeftArrow = () => {
     let x = scrollX + Math.round(window.innerWidth / 2);
     if (x > 0) {
@@ -69,7 +75,7 @@ const AlbunsRow = ({ items, type }: any) => {
                 className="albuns-list"
               >
                 {items &&
-                  items.map((album: any, key: number) => (
+                  items.map((album: SpotifyAlbumsAndPlaylists, key: number) => (
                     <div key={key} className="card-wrapper">
                       <Card data={album} type={type} />
                     </div>

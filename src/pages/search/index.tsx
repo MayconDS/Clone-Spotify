@@ -9,7 +9,6 @@ const Home = () => {
   return (
     <div className="search">
       <Sidebar />
-      {state.song != null && <Player />}
 
       <div className="fixed">
         <Search />

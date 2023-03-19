@@ -12,6 +12,7 @@ import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar";
 import { useSpotify } from "../../contexts/SpotifyContext";
 import Player from "../../components/Player/Player";
+import { ColorThiefProps, SpotifyTrack } from "../../Types/AllTypes";
 
 const Artist = () => {
   const [scrollY, setScrollY] = useState<number>(0);
@@ -60,8 +61,6 @@ const Artist = () => {
 
   return (
     <div className="artist-page">
-      {state.song != null && <Player />}
-
       <Sidebar />
       {dataLoaded && (
         <div
@@ -74,7 +73,7 @@ const Artist = () => {
             crossOrigin="anonymous"
             src={artist.images[0].url}
           >
-            {(data: any) => <>{setBgColor(data.data)}</>}
+            {(data: ColorThiefProps) => <>{setBgColor(data.data)}</>}
           </ColorThief>
           <div
             className="flyer-artist"
@@ -113,7 +112,7 @@ const Artist = () => {
               <h1 id="title">Populares</h1>
               <div className="container-track">
                 {topTracks &&
-                  topTracks.tracks.map((track: any, key: number) => (
+                  topTracks.tracks.map((track: SpotifyTrack, key: number) => (
                     <CardMusicWithIndex
                       index={key + 1}
                       key={key}

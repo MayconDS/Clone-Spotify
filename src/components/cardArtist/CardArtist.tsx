@@ -3,8 +3,13 @@ import { BsPlayCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
+import { SpotifyArtist } from "../../Types/AllTypes";
 
-const CardArtist = ({ data, type }: any) => {
+type CardArtistProps = {
+  data: SpotifyArtist;
+};
+
+const CardArtist = ({ data }: CardArtistProps) => {
   const navigate = useNavigate();
   const [buttonPlayActive, setButtonPlayActive] = useState(false);
   let nameLimited = "";
@@ -38,7 +43,7 @@ const CardArtist = ({ data, type }: any) => {
       >
         <button className="spotify-play-button"></button>
       </div>
-      <img src={data.images.length > 0 && data.images[0].url} alt="" />
+      <img src={data.images[0] && data.images[0].url} alt="" />
       <h1>{nameLimited}</h1>
       <span>{data.type}</span>
     </div>

@@ -3,8 +3,14 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 import "./styles.css";
 import Card from "../card";
+import { SpotifyAlbumsAndPlaylists } from "../../Types/AllTypes";
 
-const PlaylistsRow = ({ items, type }: any) => {
+type PlaylistsRowProps = {
+  items: SpotifyAlbumsAndPlaylists[];
+  type: string;
+};
+
+const PlaylistsRow = ({ items, type }: PlaylistsRowProps) => {
   const [scrollX, setScrollX] = useState(0);
   const [finalList, setFinalList] = useState(false);
   const handleLeftArrow = () => {
@@ -62,9 +68,11 @@ const PlaylistsRow = ({ items, type }: any) => {
               className="playlists-list"
             >
               {items &&
-                items.map((album: any, key: number) => (
-                  <Card key={key} data={album} type={type} />
-                ))}
+                items.map(
+                  (playlist: SpotifyAlbumsAndPlaylists, key: number) => (
+                    <Card key={key} data={playlist} type={type} />
+                  )
+                )}
             </div>
           </div>
         </div>

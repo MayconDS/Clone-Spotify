@@ -10,6 +10,11 @@ import Sidebar from "../../components/sidebar";
 import { useSpotify } from "../../contexts/SpotifyContext";
 import Player from "../../components/Player/Player";
 import { HiOutlineClock } from "react-icons/hi2";
+import { SpotifyTrack } from "../../Types/AllTypes";
+
+type TracksProps = {
+  track: SpotifyTrack;
+};
 
 const Playlist = () => {
   const [scrollY, setScrollY] = useState<number>(0);
@@ -39,7 +44,16 @@ const Playlist = () => {
         let ownerData = await SpotifyServices.getUserById(data.owner.id);
         setOwner(ownerData);
 
-        setTracks(data.tracks.items);
+        const filterTracks = (data: any) => {
+          let tracksFiltered: any = [];
+          data.map((item: any) => {
+            if (item.track !== null) {
+              tracksFiltered.push(item);
+            }
+          });
+          setTracks(tracksFiltered);
+        };
+        filterTracks(data.tracks.items);
 
         setDataLoaded(true);
       }
@@ -71,7 +85,7 @@ const Playlist = () => {
   useEffect(() => {
     FormatStringArtists();
   }, [state.windowWidth]);
-  const formatAlbumName = (html: any) => {
+  const formatAlbumName = (html: JSX.Element) => {
     if (state.windowWidth <= 789 && html.props.children.length >= 24) {
       return <h1 style={{ fontSize: "20px" }}>{html.props.children}</h1>;
     } else {
@@ -81,8 +95,6 @@ const Playlist = () => {
 
   return (
     <div className="playlist-page">
-      {state.song != null && <Player />}
-
       <Sidebar />
       {dataLoaded && (
         <div
@@ -158,11 +170,11 @@ const Playlist = () => {
 
               <div className="container-track">
                 {tracks &&
-                  tracks.map((track: any, key: number) => (
+                  tracks.map((track: TracksProps, key: number) => (
                     <CardMusicWithIndex
                       index={key + 1}
                       key={key}
-                      track={track.track != null ? track.track : null}
+                      track={track.track}
                     />
                   ))}
               </div>

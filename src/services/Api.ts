@@ -5,7 +5,7 @@ const route = axios.create({
 let token = localStorage.getItem("token_spotify");
 
 const SpotifyServices = {
-  search: async (query: string, type: any) => {
+  search: async (query: string, type: string) => {
     let data = await route.get("/search", {
       params: {
         q: query,

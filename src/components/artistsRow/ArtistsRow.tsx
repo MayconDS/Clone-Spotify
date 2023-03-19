@@ -3,8 +3,13 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 import "./styles.css";
 import CardArtist from "../cardArtist/CardArtist";
+import { SpotifyArtist } from "../../Types/AllTypes";
 
-const ArtistsRow = ({ items }: any) => {
+type ArtistsRowProps = {
+  items: SpotifyArtist[];
+};
+
+const ArtistsRow = ({ items }: ArtistsRowProps) => {
   const [buttonPlayActive, setButtonPlayActive] = useState(false);
   const [scrollX, setScrollX] = useState(0);
   const [finalList, setFinalList] = useState(false);
@@ -63,7 +68,9 @@ const ArtistsRow = ({ items }: any) => {
               className="artists-list"
             >
               {items &&
-                items.map((artist: any) => <CardArtist data={artist} />)}
+                items.map((artist: SpotifyArtist) => (
+                  <CardArtist data={artist} />
+                ))}
             </div>
           </div>
         </div>

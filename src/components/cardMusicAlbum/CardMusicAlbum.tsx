@@ -5,8 +5,14 @@ import { SpotifyActions, useSpotify } from "../../contexts/SpotifyContext";
 import "./styles.css";
 import { formatTime } from "../../functions/FormatTime";
 import SpotifyServices from "../../services/Api";
+import { SpotifyTrack } from "../../Types/AllTypes";
 
-const CardMusicAlbum = ({ track, index }: any) => {
+type CardMusicALbumProps = {
+  track: SpotifyTrack;
+  index: number;
+};
+
+const CardMusicAlbum = ({ track, index }: CardMusicALbumProps) => {
   const [trackWithFullInfo, setTrackWithFullInfo] = useState({});
   const [hoverMusic, setHoverMusic] = useState(false);
   const { state, dispatch } = useSpotify();

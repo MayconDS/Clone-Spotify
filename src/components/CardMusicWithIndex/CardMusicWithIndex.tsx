@@ -4,8 +4,14 @@ import { CgLoadbarSound } from "react-icons/cg";
 import { SpotifyActions, useSpotify } from "../../contexts/SpotifyContext";
 import "./styles.css";
 import { formatTime } from "../../functions/FormatTime";
+import { SpotifyTrack } from "../../Types/AllTypes";
 
-const CardMusicWithIndex = ({ track, index }: any) => {
+type CardMusicWithIndexProps = {
+  track: SpotifyTrack;
+  index: number;
+};
+
+const CardMusicWithIndex = ({ track, index }: CardMusicWithIndexProps) => {
   const [artist, setArtist] = useState<any>();
   const [hoverMusic, setHoverMusic] = useState(false);
   const { state, dispatch } = useSpotify();
@@ -123,7 +129,7 @@ const CardMusicWithIndex = ({ track, index }: any) => {
             </div>
             <div className="banner">
               <img
-                src={track.album.images ? track.album.images[0].url : ""}
+                src={track.album?.images ? track.album.images[0].url : ""}
                 alt=""
               />
             </div>
@@ -140,7 +146,7 @@ const CardMusicWithIndex = ({ track, index }: any) => {
           </div>
           {state.windowWidth >= 1140 ? (
             <div className="music-album">
-              <span>{track.album.name}</span>
+              <span>{track.album?.name}</span>
             </div>
           ) : null}
           <div className="music-duration">{formatTime(track.duration_ms)}</div>

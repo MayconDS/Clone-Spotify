@@ -4,8 +4,17 @@ import { BsPlayCircleFill } from "react-icons/bs";
 import "./styles.css";
 import { formatString } from "../../functions/FormatString/FormatString";
 import { useNavigate } from "react-router-dom";
+import {
+  SpotifyAlbumsAndPlaylists,
+  SpotifyArtistsAlbums,
+} from "../../Types/AllTypes";
 
-const Card = ({ data, type }: any) => {
+type PropsCard = {
+  data: SpotifyAlbumsAndPlaylists;
+  type: string;
+};
+
+const Card = ({ data, type }: PropsCard) => {
   let navigate = useNavigate();
   const [buttonPlayActive, setButtonPlayActive] = useState(false);
 
@@ -18,7 +27,6 @@ const Card = ({ data, type }: any) => {
   };
 
   const redirect = () => {
-    console.log(type);
     if (type == "playlist") {
       return navigate(`/playlist/${data.id}`);
     } else if (type == "album") {
@@ -49,7 +57,7 @@ const Card = ({ data, type }: any) => {
           "",
           <span style={{ color: "gray" }}>
             {data.release_date.split("-")[0]} •
-            {data.artists.map((artist: any, key: number) => (
+            {data.artists.map((artist: SpotifyArtistsAlbums, key: number) => (
               <span key={key}> {artist.name}, </span>
             ))}
           </span>

@@ -4,9 +4,13 @@ import "./styles.css";
 import { SpotifyActions } from "../../contexts/SpotifyContext";
 import { useSpotify } from "../../contexts/SpotifyContext";
 import { formatTime } from "../../functions/FormatTime";
-import { formatString } from "../../functions/FormatString/FormatString";
+import { SpotifyTrack } from "../../Types/AllTypes";
 
-const CardMusic = ({ track }: any) => {
+type CardMusicProps = {
+  track: SpotifyTrack;
+};
+
+const CardMusic = ({ track }: CardMusicProps) => {
   const [artist, setArtist] = useState<any>();
   const [hoverMusic, setHoverMusic] = useState(false);
   const { state, dispatch } = useSpotify();
@@ -92,7 +96,7 @@ const CardMusic = ({ track }: any) => {
         ))}
       </span>
     );
-  }, [state.windowWidth]);
+  }, [state.windowWidth, track]);
 
   return (
     <div
@@ -107,7 +111,7 @@ const CardMusic = ({ track }: any) => {
             style={{
               filter: hoverMusic == true ? "brightness(0.7)" : "",
             }}
-            src={track.album.images[0].url}
+            src={track.album?.images[0].url}
             alt=""
           />
           <div

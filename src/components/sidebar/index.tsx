@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import SpotifyServices from "../../services/Api";
 import { Link } from "react-router-dom";
 import { useSpotify, SpotifyActions } from "../../contexts/SpotifyContext";
+import { SpotifyPlaylist } from "../../Types/AllTypes";
 
 const Sidebar = () => {
   const { state, dispatch } = useSpotify();
@@ -61,7 +62,7 @@ const Sidebar = () => {
       <div className="line"></div>
       <div className="playlists">
         {playlists
-          ? playlists.map((playlist: any) => (
+          ? playlists.map((playlist: SpotifyPlaylist) => (
               <Link to={`/playlist/${playlist.id}`}>
                 {state.windowWidth <= 600
                   ? playlist.name.substring(0, 4) + "..."

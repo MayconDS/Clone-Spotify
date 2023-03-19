@@ -10,6 +10,7 @@ import { useSpotify } from "../../contexts/SpotifyContext";
 import Player from "../../components/Player/Player";
 import { HiOutlineClock } from "react-icons/hi2";
 import CardMusicAlbum from "../../components/cardMusicAlbum/CardMusicAlbum";
+import { ColorThiefProps, SpotifyTrack } from "../../Types/AllTypes";
 
 const Album = () => {
   const [scrollY, setScrollY] = useState<number>(0);
@@ -69,7 +70,7 @@ const Album = () => {
   useEffect(() => {
     FormatStringArtists();
   }, [state.windowWidth]);
-  const formatAlbumName = (html: any) => {
+  const formatAlbumName = (html: JSX.Element) => {
     if (state.windowWidth <= 789 && html.props.children.length >= 29) {
       return <h1 style={{ fontSize: "20px" }}>{html.props.children}</h1>;
     } else {
@@ -77,12 +78,8 @@ const Album = () => {
     }
   };
 
-  console.log(state.windowWidth);
-
   return (
     <div className="album-page">
-      {state.song != null && <Player />}
-
       <Sidebar />
       {dataLoaded && (
         <div
@@ -95,7 +92,7 @@ const Album = () => {
             crossOrigin="anonymous"
             src={album.images[0].url}
           >
-            {(data: any) => <>{setBgColor(data.data)}</>}
+            {(data: ColorThiefProps) => <>{setBgColor(data.data)}</>}
           </ColorThief>
           <div
             className="flyer-album"
@@ -155,7 +152,7 @@ const Album = () => {
 
               <div className="container-track">
                 {tracks &&
-                  tracks.map((track: any, key: number) => (
+                  tracks.map((track: SpotifyTrack, key: number) => (
                     <CardMusicAlbum index={key + 1} key={key} track={track} />
                   ))}
               </div>

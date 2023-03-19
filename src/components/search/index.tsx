@@ -1,16 +1,14 @@
 import { useState, KeyboardEvent, useEffect, useMemo } from "react";
-import { FiSearch } from "react-icons/fi";
 import { useSpotify, SpotifyActions } from "../../contexts/SpotifyContext";
 import { HiPauseCircle } from "react-icons/hi2";
 import SpotifyServices from "../../services/Api";
 import ArtistsRow from "../artistsRow/ArtistsRow";
 import AlbunsRow from "../albunsRow/AlbunsRow";
 import PlaylistsRow from "../playlistsRow/PlaylistsRow";
-import EpisodesRow from "../episodesRow/EpisodesRow";
 import "./styles.css";
 import CardMusic from "../cardMusic/CardMusic";
 import Header from "../header/Header";
-import Sidebar from "../sidebar";
+import { SpotifyTrack } from "../../Types/AllTypes";
 
 type DataType = {
   tracks: [string];
@@ -119,7 +117,7 @@ const Search = () => {
 
                       <span>
                         {state.data.tracks.items[0].artists.map(
-                          (artist: any, key: number) => (
+                          (artist: SpotifyTrack, key: number) => (
                             <span>{artist.name}, </span>
                           )
                         )}
@@ -131,14 +129,14 @@ const Search = () => {
                   <h1>Músicas</h1>
                   <div className="container-musics">
                     {state.data.tracks &&
-                      tracksLimited.map((track: any, key: number) => (
+                      tracksLimited.map((track: SpotifyTrack, key: number) => (
                         <CardMusic track={track} key={key} />
                       ))}
                   </div>
                 </div>
               </div>
               {state.data.artists && (
-                <ArtistsRow items={state.data.artists.items} type="artist" />
+                <ArtistsRow items={state.data.artists.items} />
               )}
 
               {state.data.albums && (

@@ -37,7 +37,14 @@ const Player = () => {
   }, [stateVolume]);
 
   useEffect(() => {
-    setIsPlaying(true);
+    const setPlaying = () => {
+      if (state.song !== null) {
+        audioRef.current.audio.current.play();
+        setIsPlaying(true);
+      }
+    };
+
+    setPlaying();
   }, [state.song]);
 
   const formatString = (html: JSX.Element) => {
@@ -68,97 +75,102 @@ const Player = () => {
     }
   };
   useEffect(() => {
-    formatString(
-      <span>
-        {state.song?.artists.map((artist: any) => (
-          <span>{artist.name}, </span>
-        ))}
-      </span>
-    );
+    if (state.song !== null) {
+      formatString(
+        <span>
+          {state.song?.artists.map((artist: any) => (
+            <span>{artist.name}, </span>
+          ))}
+        </span>
+      );
+    }
   }, [state.windowWidth, state.song]);
 
-  console.log(state.song);
   return (
-    <div
-      style={{
-        flexDirection: state.windowWidth <= 449 ? "column" : "row",
-        height: state.windowWidth <= 449 ? "150px" : "90px",
-        paddingTop: state.windowWidth <= 449 ? "10px" : "",
-      }}
-      className="spotify-player"
-    >
-      <div className="song">
-        <div className="song-banner">
-          <img src={state.song?.album.images[0].url} alt="" />
-        </div>
-        <div className="song-title">
-          <h1>{state.song?.name}</h1>
-          {artist}
-        </div>
-        <div className="song-buttons">
-          <AiOutlineHeart />
+    <>
+      {state.song != null && (
+        <div
+          style={{
+            flexDirection: state.windowWidth <= 449 ? "column" : "row",
+            height: state.windowWidth <= 449 ? "150px" : "90px",
+            paddingTop: state.windowWidth <= 449 ? "10px" : "",
+          }}
+          className="spotify-player"
+        >
+          <div className="song">
+            <div className="song-banner">
+              <img src={state.song?.album.images[0].url} alt="" />
+            </div>
+            <div className="song-title">
+              <h1>{state.song?.name}</h1>
+              {artist}
+            </div>
+            <div className="song-buttons">
+              <AiOutlineHeart />
 
-          <CgInpicture />
-        </div>
-      </div>
-      <div className="controls-player">
-        <div className="buttons">
-          <button>
-            {" "}
-            <FaRandom />
-          </button>
-          <button>
-            {" "}
-            <FaStepBackward />
-          </button>
-          <button
-            style={{
-              transform: isPlaying == true ? "scale(1.05,1.05)" : "",
-            }}
-            onClick={handlePlayButtonClick}
-            id="play-btn"
-          >
-            {isPlaying == true ? <MdPauseCircle /> : <IoPlayCircleSharp />}
-          </button>
-          <button>
-            {" "}
-            <FaStepForward />
-          </button>
-          <button>
-            <TbRepeat />
-          </button>
-        </div>
-        <div style={{ marginTop: "-6px" }} className="progress-bar">
-          <ReactH5AudioPlayer
-            src={state.song?.preview_url}
-            ref={audioRef}
-            autoPlay={false}
-            volume={stateVolume}
-            loop={false}
-            customControlsSection={[]}
-          />
-        </div>
-      </div>
-      {state.windowWidth > 660 && (
-        <div className="controls-adjust">
-          <button>
-            {" "}
-            <TbMicrophone2 />{" "}
-          </button>
-          <button>
-            {" "}
-            <HiOutlineQueueList />{" "}
-          </button>
-          <button>
-            <MdDevices />
-          </button>
-          <div className="volume">
-            <RxSpeakerModerate />
-            <RangeSlider setVolume={setStateVolume} />
+              <CgInpicture />
+            </div>
           </div>
+          <div className="controls-player">
+            <div className="buttons">
+              <button>
+                {" "}
+                <FaRandom />
+              </button>
+              <button>
+                {" "}
+                <FaStepBackward />
+              </button>
+              <button
+                style={{
+                  transform: isPlaying == true ? "scale(1.05,1.05)" : "",
+                }}
+                onClick={handlePlayButtonClick}
+                id="play-btn"
+              >
+                {isPlaying == true ? <MdPauseCircle /> : <IoPlayCircleSharp />}
+              </button>
+              <button>
+                {" "}
+                <FaStepForward />
+              </button>
+              <button>
+                <TbRepeat />
+              </button>
+            </div>
+            <div style={{ marginTop: "-6px" }} className="progress-bar">
+              <ReactH5AudioPlayer
+                src={state.song?.preview_url}
+                ref={audioRef}
+                autoPlay={true}
+                volume={stateVolume}
+                loop={false}
+                customControlsSection={[]}
+              />
+            </div>
+          </div>
+          {state.windowWidth > 660 && (
+            <div className="controls-adjust">
+              <button>
+                {" "}
+                <TbMicrophone2 />{" "}
+              </button>
+              <button>
+                {" "}
+                <HiOutlineQueueList />{" "}
+              </button>
+              <button>
+                <MdDevices />
+              </button>
+              <div className="volume">
+                <RxSpeakerModerate />
+                <RangeSlider setVolume={setStateVolume} />
+              </div>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

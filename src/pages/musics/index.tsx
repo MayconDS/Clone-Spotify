@@ -1,21 +1,29 @@
 import Header from "../../components/header/Header";
 import { HiOutlineClock } from "react-icons/hi2";
-import { useSpotify } from "../../contexts/SpotifyContext";
+import { SpotifyActions, useSpotify } from "../../contexts/SpotifyContext";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import CardMusicWithIndex from "../../components/CardMusicWithIndex/CardMusicWithIndex";
 import Player from "../../components/Player/Player";
 import Sidebar from "../../components/sidebar";
+import { SpotifyTrack } from "../../Types/AllTypes";
 const Musics = () => {
-  const { state } = useSpotify();
+  const { state, dispatch } = useSpotify();
   const [tracks, setTracks] = useState(state.data.tracks);
+
+  useEffect(() => {
+    dispatch({
+      type: SpotifyActions.setActiveFilterHeader,
+      payload: "track",
+    });
+  }, []);
+
   useEffect(() => {
     setTracks(state.data.tracks);
   }, [state.data]);
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      {state.song != null && <Player />}
       <div className="tracks-page">
         <Header />
 
@@ -32,7 +40,7 @@ const Musics = () => {
           </div>
           <div className="tracks">
             {tracks &&
-              tracks.items.map((track: any, index: any) => (
+              tracks.items.map((track: SpotifyTrack, index: number) => (
                 <CardMusicWithIndex track={track} index={index + 1} />
               ))}
           </div>
