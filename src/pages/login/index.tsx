@@ -33,7 +33,7 @@ function Login() {
   }, []);
 
   const handleClick = () => {
-    const redirectUrl = "http://localhost:5173/login";
+    const redirectUrl = "https://newsound.vercel.app/login";
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-email",
