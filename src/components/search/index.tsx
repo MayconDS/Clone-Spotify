@@ -1,22 +1,14 @@
-import { useState, KeyboardEvent, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSpotify, SpotifyActions } from "../../contexts/SpotifyContext";
 import { HiPauseCircle } from "react-icons/hi2";
 import SpotifyServices from "../../services/Api";
 import ArtistsRow from "../artistsRow/ArtistsRow";
 import AlbunsRow from "../albunsRow/AlbunsRow";
 import PlaylistsRow from "../playlistsRow/PlaylistsRow";
-import "./styles.css";
 import CardMusic from "../cardMusic/CardMusic";
 import Header from "../header/Header";
 import { SpotifyTrack } from "../../Types/AllTypes";
-
-type DataType = {
-  tracks: [string];
-  albums: [];
-  artists: [];
-  episodes: [];
-  playlists: [];
-};
+import "./styles.css";
 
 const Search = () => {
   const [buttonPlayActive, setButtonPlayActive] = useState(false);
@@ -40,24 +32,26 @@ const Search = () => {
 
   useEffect(() => {
     const getDataDefault = async () => {
-      let data = await SpotifyServices.search(state.query, filter);
+      if (localStorage.getItem("token_spotify")) {
+        let data = await SpotifyServices.search(state.query, filter);
 
-      dispatch({
-        type: SpotifyActions.setData,
-        payload: data,
-      });
-      // LIMIT TRAKCS IN 4 ITEM
-      let tracks = [];
-      if (state.data.tracks) {
-        if (state.data.tracks.items) {
-          for (let i = 0; i <= 3; i++) {
-            tracks.push(state.data.tracks.items[i]);
+        dispatch({
+          type: SpotifyActions.setData,
+          payload: data,
+        });
+        // LIMIT TRAKCS IN 4 ITEM
+        let tracks = [];
+        if (state.data.tracks) {
+          if (state.data.tracks.items) {
+            for (let i = 0; i <= 3; i++) {
+              tracks.push(state.data.tracks.items[i]);
+            }
           }
+        } else {
+          return;
         }
-      } else {
-        return;
+        setTracksLimited(tracks);
       }
-      setTracksLimited(tracks);
     };
     getDataDefault();
   }, []);
@@ -118,7 +112,7 @@ const Search = () => {
                       <span>
                         {state.data.tracks.items[0].artists.map(
                           (artist: SpotifyTrack, key: number) => (
-                            <span>{artist.name}, </span>
+                            <span key={key}>{artist.name}, </span>
                           )
                         )}
                       </span>

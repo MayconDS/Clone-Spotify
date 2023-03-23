@@ -62,8 +62,8 @@ const Sidebar = () => {
       <div className="line"></div>
       <div className="playlists">
         {playlists
-          ? playlists.map((playlist: SpotifyPlaylist) => (
-              <Link to={`/playlist/${playlist.id}`}>
+          ? playlists.map((playlist: SpotifyPlaylist, key: number) => (
+              <Link key={key} to={`/playlist/${playlist.id}`}>
                 {state.windowWidth <= 600
                   ? playlist.name.substring(0, 4) + "..."
                   : playlist.name.substring(0, 12)}

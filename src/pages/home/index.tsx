@@ -22,9 +22,13 @@ const Home = () => {
         <h1>Suas playlists</h1>
         <div className="container-playlists">
           {playlists.length > 0 &&
-            playlists.map((playlist: SpotifyAlbumsAndPlaylists) => (
-              <Card type="playlist" data={playlist} />
-            ))}
+            playlists.map(
+              (playlist: SpotifyAlbumsAndPlaylists, key: number) => (
+                <div key={key}>
+                  <Card type="playlist" data={playlist} />
+                </div>
+              )
+            )}
         </div>
       </div>
     </div>

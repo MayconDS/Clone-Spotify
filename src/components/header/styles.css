@@ -20,6 +20,7 @@ header > .header-top > .search-input {
   gap: 12px;
   padding: 5px 10px;
   max-width: 400px;
+
   width: 100%;
   border-radius: 32px;
 }

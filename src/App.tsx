@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import Login from "./pages/login";
 import Router from "./routes/routes";
-import { SpotifyProvider, useSpotify } from "./contexts/SpotifyContext";
+import { SpotifyProvider } from "./contexts/SpotifyContext";
 import Player from "./components/Player/Player";
 
+import "./App.css";
 function App() {
   return (
     <SpotifyProvider>

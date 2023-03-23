@@ -4,7 +4,6 @@ import { SpotifyActions, useSpotify } from "../../contexts/SpotifyContext";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import CardMusicWithIndex from "../../components/CardMusicWithIndex/CardMusicWithIndex";
-import Player from "../../components/Player/Player";
 import Sidebar from "../../components/sidebar";
 import { SpotifyTrack } from "../../Types/AllTypes";
 const Musics = () => {
@@ -41,7 +40,10 @@ const Musics = () => {
           <div className="tracks">
             {tracks &&
               tracks.items.map((track: SpotifyTrack, index: number) => (
-                <CardMusicWithIndex track={track} index={index + 1} />
+                <div key={index}>
+                  {" "}
+                  <CardMusicWithIndex track={track} index={index + 1} />
+                </div>
               ))}
           </div>
         </div>

@@ -34,7 +34,9 @@ const Artists = () => {
           <div className="artists">
             {artists &&
               artists.items.map((artist: SpotifyArtist, index: any) => (
-                <CardArtist data={artist} />
+                <div key={index}>
+                  <CardArtist data={artist} />
+                </div>
               ))}
           </div>
         </div>

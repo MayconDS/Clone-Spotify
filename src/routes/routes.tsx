@@ -14,8 +14,6 @@ import Album from "../pages/album";
 import Home from "../pages/home";
 
 const Router = () => {
-  const { state, dispatch } = useSpotify();
-
   return (
     <BrowserRouter>
       <Routes>

@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+/// <reference types="vite/client" />
+import { useEffect } from "react";
 import { useSpotify, SpotifyActions } from "../../contexts/SpotifyContext";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import "./styles.css";
+
+const clientId = import.meta.env.VITE_CLIENT_ID;
 
 function Login() {
-  const { state, dispatch } = useSpotify();
+  const { dispatch } = useSpotify();
   const navigate = useNavigate();
   useEffect(() => {
     const setToken = () => {
@@ -28,7 +33,6 @@ function Login() {
   }, []);
 
   const handleClick = () => {
-    const clientId = "272442fc1fd44c6faeba458eaaefd1c6";
     const redirectUrl = "http://localhost:5173/login";
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scope = [
@@ -48,7 +52,11 @@ function Login() {
 
   return (
     <div className="container-login">
-      <button onClick={handleClick}>Connect Spotify</button>
+      <div className="logo">
+        <img src="https://imgs.search.brave.com/3iRmqSnMQa6ZOq33c_CQYKg4VdfSULfm4owYs9mb7Bw/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9sb2dv/bG9vay5uZXQvd3At/Y29udGVudC91cGxv/YWRzLzIwMjEvMDYv/U3ltYm9sLVNwb3Rp/ZnkucG5n" />
+      </div>
+      <h1>Conecte-se com sua conta do Spotify</h1>
+      <button onClick={handleClick}>Conectar</button>
     </div>
   );
 }

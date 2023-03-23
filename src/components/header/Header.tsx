@@ -3,11 +3,7 @@ import React, { useState, KeyboardEvent, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 
 import SpotifyServices from "../../services/Api";
-import {
-  useSpotify,
-  SpotifyProvider,
-  SpotifyActions,
-} from "../../contexts/SpotifyContext";
+import { useSpotify, SpotifyActions } from "../../contexts/SpotifyContext";
 
 import "./styles.css";
 import { Link } from "react-router-dom";

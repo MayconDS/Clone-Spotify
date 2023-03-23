@@ -181,9 +181,44 @@
 
 @media (max-width: 422px) {
   .card-artist {
-    max-width: 281px;
+    max-width: 301px;
     height: 279px;
-    width: 100%;
+    width: 281px;
+  }
+  .card-artist > img {
+    width: 148px;
+    height: 148px;
+  }
+}
+
+@media (max-width: 391px) {
+  .card-artist {
+    max-width: 250px;
+    height: 279px;
+    width: 250px;
+  }
+  .card-artist > img {
+    width: 148px;
+    height: 148px;
+  }
+}
+
+@media (max-width: 362px) {
+  .card-artist {
+    max-width: 230px;
+    height: 279px;
+    width: 220px;
+  }
+  .card-artist > img {
+    width: 148px;
+    height: 148px;
+  }
+}
+@media (max-width: 337px) {
+  .card-artist {
+    max-width: 220px;
+    height: 279px;
+    width: 205px;
   }
   .card-artist > img {
     width: 148px;

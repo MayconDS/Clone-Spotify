@@ -68,8 +68,11 @@ const ArtistsRow = ({ items }: ArtistsRowProps) => {
               className="artists-list"
             >
               {items &&
-                items.map((artist: SpotifyArtist) => (
-                  <CardArtist data={artist} />
+                items.map((artist: SpotifyArtist, key: number) => (
+                  <div key={key}>
+                    {" "}
+                    <CardArtist data={artist} />
+                  </div>
                 ))}
             </div>
           </div>
