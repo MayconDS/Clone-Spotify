@@ -154,6 +154,7 @@ input[type="range"]::-webkit-slider-thumb {
   background-color: transparent;
   width: 100%;
   height: 40px;
+  border: none;
 }
 
 .rhap_progress-indicator {
@@ -170,6 +171,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .rhap_download-progress {
   background-color: #5e5e5e;
+  border: none;
 }
 .rhap_progress-bar-show-download {
   height: 4px;
