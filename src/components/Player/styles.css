@@ -154,7 +154,7 @@ input[type="range"]::-webkit-slider-thumb {
   background-color: transparent;
   width: 100%;
   height: 40px;
-  border: none;
+  border: none !important;
 }
 
 .rhap_progress-indicator {
