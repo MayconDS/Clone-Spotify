@@ -10,22 +10,27 @@ Este é um clone do Spotify desenvolvido com ReactJS e TypeScript, permitindo qu
 
 ## Instalação
 
-1. Clone o repositório em sua máquina local.<br/>
+#### 1. Clone o repositório em sua máquina local.<br/>
 `git clone https://github.com/seu-usuario/nome-do-repositorio.git`
   
   
 
-2. Navegue até a pasta do projeto.<br/>
-    `cd nome-do-repositorio`
+#### 2. Navegue até a pasta do projeto.<br/>
+    cd nome-do-repositorio
 
 
-3. Instale as dependências do projeto.<br/>
-    `npm install`
+#### 3. Instale as dependências do projeto
+    npm install
 
-4. Inicie o servidor de desenvolvimento.<br/>
-    `npm run dev`
+#### 4. Inicie o servidor de desenvolvimento
+    npm run dev
 
-5. Abra o aplicativo no seu navegador em `http://localhost:5173`.
+#### 5. Abra o aplicativo no seu navegador em
+    http://localhost:5173.
+
+
+## Deploy
+    https://newsound.vercel.app/login
 
 ## Funcionalidades
 
