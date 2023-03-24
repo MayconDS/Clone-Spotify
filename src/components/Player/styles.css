@@ -91,7 +91,7 @@
   display: flex;
   color: hsla(0, 0%, 100%, 0.7);
   justify-content: space-between;
-
+  border: none;
   font-size: 13px;
   align-items: center;
   gap: 4px;

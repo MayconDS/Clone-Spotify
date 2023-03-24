@@ -143,6 +143,7 @@ const Player = () => {
                 src={state.song?.preview_url}
                 ref={audioRef}
                 autoPlay={true}
+                style={{ border: "none" }}
                 volume={stateVolume}
                 loop={false}
                 customControlsSection={[]}
